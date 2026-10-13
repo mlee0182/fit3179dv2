@@ -1,0 +1,194 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heatmap of memorial types against the wars they honour in Queensland. Each column adds up to 100 per cent, so wars of different sizes can be compared.",
+  "width": "container",
+  "height": {"step": 27},
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "padding": {"top": 72, "left": 60, "right": 12, "bottom": 4},
+  "data": {"url": "data/qld_memorials.csv"},
+  "transform": [
+    {
+      "calculate": "split(datum.conflicts || '', '|')",
+      "as": "tags"
+    },
+    {
+      "flatten": ["tags"]
+    },
+    {"calculate": "trim(split(datum.tags, ',')[0])", "as": "tag"},
+    {
+      "filter": "indexof(['Unit memorials', 'Other', 'Japan (BCOF)', ''], datum.tag) < 0"
+    },
+    {
+      "calculate": "{'South Africa War': 'Boer War', 'Boxer Rebellion': 'Boxer Rebellion', 'First World War': 'WWI', 'Second World War': 'WWII', 'Indonesian Confrontation': 'Confrontation', 'Vietnam War': 'Vietnam War', 'Korean War': 'Korean War', 'Malayan Emergency': 'Malayan Emergency'}[datum.tag] || datum.tag",
+      "as": "war"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "count",
+          "as": "memorials"
+        }
+      ],
+      "groupby": [
+        "type_main",
+        "war"
+      ]
+    },
+    {
+      "joinaggregate": [
+        {"op": "sum", "field": "memorials", "as": "war_total"}
+      ],
+      "groupby": ["war"]
+    },
+    {"filter": "datum.war_total >= 50"},
+    {
+      "joinaggregate": [
+        {"op": "sum", "field": "memorials", "as": "type_total"}
+      ],
+      "groupby": [
+        "type_main"
+      ]
+    },
+    {
+      "calculate": "datum.memorials / datum.war_total * 100",
+      "as": "percent"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "war",
+      "type": "ordinal",
+      "title": null,
+      "sort": [
+        "Boer War",
+        "WWI",
+        "WWII",
+        "Malayan Emergency",
+        "Korean War",
+        "Confrontation",
+        "Vietnam War",
+        "Peacekeeping",
+        "Gulf War",
+        "Somalia"
+      ],
+      "axis": {
+        "orient": "top",
+        "labelAngle": -35,
+        "labelAlign": "left",
+        "labelFontWeight": 600,
+        "domain": false,
+        "ticks": false,
+        "labelLimit": 220
+      }
+    },
+    "y": {
+      "field": "type_main",
+      "type": "ordinal",
+      "title": null,
+      "sort": {
+        "field": "type_total",
+        "op": "max",
+        "order": "descending"
+      },
+      "axis": {
+        "domain": false,
+        "ticks": false,
+        "labelLimit": 200
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "rect", "stroke": "#fbf9f4", "strokeWidth": 1.5},
+      "encoding": {
+        "color": {
+          "field": "percent",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [1, 5, 10, 20, 35],
+            "range": ["#f6f2e8", "#e9dcc0", "#d6bd86", "#bb9345", "#8c6420", "#5a3d0e"]
+          },
+          "legend": {
+            "title": "Share of the war's memorials (%)",
+            "titleLimit": 320,
+            "orient": "bottom",
+            "type": "symbol",
+            "direction": "horizontal",
+            "symbolType": "square",
+            "symbolSize": 200,
+            "columns": 6,
+            "format": ".0f"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "type_main",
+            "type": "nominal",
+            "title": "Memorial type"
+          },
+          {
+            "field": "war",
+            "type": "nominal",
+            "title": "War"
+          },
+          {
+            "field": "memorials",
+            "type": "quantitative",
+            "title": "Memorials"
+          },
+          {
+            "field": "war_total",
+            "type": "quantitative",
+            "title": "All memorials honouring the war"
+          },
+          {
+            "field": "percent",
+            "type": "quantitative",
+            "title": "Share (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.percent >= 5"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11
+      },
+      "encoding": {
+        "text": {
+          "field": "percent",
+          "type": "quantitative",
+          "format": ".0f"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.percent >= 20",
+            "value": "#ffffff"
+          },
+          "value": "#2b2a27"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "indexof(['WWI|Honour board', 'Vietnam War|Honour board', 'WWI|Stone/cairn/plinth', 'Vietnam War|Stone/cairn/plinth', 'Malayan Emergency|Stone/cairn/plinth'], datum.war + '|' + datum.type_main) >= 0"
+        }
+      ],
+      "mark": {"type": "rect", "fill": null, "stroke": "#111111", "strokeWidth": 2.5}
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}

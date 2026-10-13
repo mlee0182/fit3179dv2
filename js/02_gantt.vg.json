@@ -1,0 +1,232 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Gantt chart of the conflicts that appear in both the Australian War Memorial casualty table and the Places of Pride register. Each bar runs from the start to the end of the official service period.",
+  "width": "container",
+  "height": {
+    "step": 28
+  },
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "padding": {
+    "top": 6,
+    "left": 36,
+    "right": 12,
+    "bottom": 6
+  },
+  "data": {
+    "url": "data/awm_deaths_by_conflict.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "start_date": "date",
+        "end_date": "date",
+        "deaths": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.pop_conflict"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "min",
+          "field": "start_date",
+          "as": "start_date"
+        },
+        {
+          "op": "max",
+          "field": "end_date",
+          "as": "end_date"
+        },
+        {
+          "op": "sum",
+          "field": "deaths",
+          "as": "deaths"
+        }
+      ],
+      "groupby": ["pop_conflict"]
+    },
+    {
+      "calculate": "indexof(['First World War', 'Second World War', 'Boer War', 'Vietnam War', 'Korean War', 'Malayan Emergency', 'Indonesian Confrontation'], datum.pop_conflict) >= 0 ? datum.pop_conflict : 'Other wars'",
+      "as": "war"
+    },
+    {
+      "calculate": "(datum.end_date - datum.start_date) / 31557600000",
+      "as": "years"
+    },
+    {
+      "calculate": "format(datum.years, datum.years < 10 ? '.1f' : '.0f') + ' years  ·  ' + format(datum.deaths, ',') + ' deaths'",
+      "as": "label"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "pop_conflict",
+      "type": "nominal",
+      "sort": {
+        "field": "start_date",
+        "op": "min"
+      },
+      "title": null,
+      "axis": {
+        "labelLimit": 220,
+        "domain": false,
+        "ticks": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "height": {
+          "band": 0.62
+        },
+        "cornerRadius": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "start_date",
+          "type": "temporal",
+          "title": "Year of service (AWM official periods)",
+          "scale": {
+            "domain": [
+              {
+                "year": 1880
+              },
+              {
+                "year": 2080
+              }
+            ]
+          },
+          "axis": {
+            "values": [
+              {
+                "year": 1880
+              },
+              {
+                "year": 1900
+              },
+              {
+                "year": 1920
+              },
+              {
+                "year": 1940
+              },
+              {
+                "year": 1960
+              },
+              {
+                "year": 1980
+              },
+              {
+                "year": 2000
+              },
+              {
+                "year": 2020
+              }
+            ],
+            "format": "%Y",
+            "grid": true,
+            "domain": false
+          }
+        },
+        "x2": {
+          "field": "end_date"
+        },
+        "color": {
+          "field": "war",
+          "type": "nominal",
+          "scale": {
+            "domain": ["First World War", "Second World War", "Boer War", "Vietnam War", "Korean War", "Malayan Emergency", "Indonesian Confrontation", "Other wars"],
+            "range": ["#975b20", "#275267", "#725e44", "#3e1875", "#2788b9", "#dba156", "#7a56db", "#9b958a"]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "pop_conflict",
+            "type": "nominal",
+            "title": "Conflict"
+          },
+          {
+            "field": "start_date",
+            "type": "temporal",
+            "title": "Start",
+            "format": "%d %b %Y"
+          },
+          {
+            "field": "end_date",
+            "type": "temporal",
+            "title": "End",
+            "format": "%d %b %Y"
+          },
+          {
+            "field": "deaths",
+            "type": "quantitative",
+            "title": "Australian deaths",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 6,
+        "fontSize": 11,
+        "color": "#4a473f"
+      },
+      "encoding": {
+        "x": {
+          "field": "end_date",
+          "type": "temporal"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "pop_conflict": "East Timor",
+            "start_date": "1999-01-01",
+            "date": "1995-06-01",
+            "note": "Recent wars: longer, fewer deaths"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -10,
+        "fontSize": 12,
+        "fontStyle": "italic",
+        "color": "#4a473f"
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal"
+        },
+        "text": {
+          "field": "note",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

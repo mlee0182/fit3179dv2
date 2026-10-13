@@ -1,0 +1,146 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Dot map of every war memorial in the Queensland register. One dot is one memorial. Dots honouring the selected war are red.",
+  "width": "container",
+  "height": 560,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "params": [
+    {
+      "name": "conflict",
+      "value": "First World War"
+    }
+  ],
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [-14, -25],
+    "rotate": [-146, 0]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/qld_councils.json",
+        "format": {
+          "type": "topojson",
+          "feature": "qld_lga"
+        }
+      },
+      "mark": {"type": "geoshape", "fill": "#e9e4d6", "stroke": "#fbf9f4", "strokeWidth": 0.6}
+    },
+    {
+      "data": {"url": "data/qld_memorials.csv"},
+      "transform": [
+        {
+          "filter": "lower(toString(datum.coords_ok)) == 'true'"
+        },
+        {
+          "calculate": "indexof(datum.conflicts || '', conflict) >= 0 ? 'Honours this war' : 'Does not honour it'",
+          "as": "match"
+        }
+      ],
+      "mark": {"type": "circle", "size": 26, "strokeWidth": 0},
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "match",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Honours this war",
+              "Does not honour it"
+            ],
+            "range": ["#b8281c", "#a8a28f"]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top-right",
+            "symbolOpacity": 1
+          }
+        },
+        "opacity": {
+          "condition": {
+            "test": "datum.match == 'Honours this war'",
+            "value": 0.75
+          },
+          "value": 0.35
+        },
+        "order": {
+          "field": "match",
+          "type": "nominal",
+          "sort": "descending"
+        },
+        "tooltip": [
+          {
+            "field": "name",
+            "type": "nominal",
+            "title": "Memorial"
+          },
+          {
+            "field": "suburb",
+            "type": "nominal",
+            "title": "Suburb"
+          },
+          {
+            "field": "lga_name",
+            "type": "nominal",
+            "title": "Council"
+          },
+          {
+            "field": "type_main",
+            "type": "nominal",
+            "title": "Type"
+          },
+          {
+            "field": "conflicts",
+            "type": "nominal",
+            "title": "Wars honoured"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 150.9,
+            "lat": -27.6,
+            "note": "Most memorials cluster in the south-east →"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "fontSize": 12,
+        "fontStyle": "italic",
+        "color": "#4a473f"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "note",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}

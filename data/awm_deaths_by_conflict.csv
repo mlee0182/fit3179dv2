@@ -1,0 +1,37 @@
+conflict,dates_awm,start_date,end_date,date_precision,ongoing,deaths,pop_conflict
+New Zealand,1860–61,1860-01-01,1861-12-31,year,False,0,
+Sudan,1885,1885-01-01,1885-12-31,year,False,9,Sudan
+South Africa,11 October 1899 to 31 May 1902,1899-10-11,1902-05-31,day,False,594,Boer War
+China,6 August 1900 to 25 April 1901,1900-08-06,1901-04-25,day,False,6,Boxer Rebellion
+First World War,4 August 1914 to 31 March 1921,1914-08-04,1921-03-31,day,False,61727,First World War
+Second World War,3 September 1939 to 30 June 1947,1939-09-03,1947-06-30,day,False,39658,Second World War
+"Australia (North Queensland Coast, bomb and mine clearance)",1947–50,1947-01-01,1950-12-31,year,False,4,
+Japan (British Commonwealth Occupation Force),1945-52,1945-01-01,1952-12-31,year,False,34,
+Papua and New Guinea,1947-75,1947-01-01,1975-12-31,year,False,28,
+Middle East (UNTSO; Operation Paladin),1948,1948-01-01,1948-12-31,year,False,1,
+Berlin Airlift,1948-49,1948-01-01,1949-12-31,year,False,1,
+Malayan Emergency,16 June 1948 to 31 July 1960,1948-06-16,1960-07-31,day,False,39,Malayan Emergency
+Kashmir (United Nations Military Observer Group in India and Pakistan),1948-85,1948-01-01,1985-12-31,year,False,1,
+Korean War,27 June 1950 to 27 July 1953,1950-06-27,1953-07-27,day,False,340,Korean War
+British Commonwealth Forces Korea (Japan),1950-1957,1950-01-01,1957-12-31,year,False,11,
+Malta,1952-55,1952-01-01,1955-12-31,year,False,3,
+Korean War (Post-Armistice service - ceasefire monitoring),1953-57,1953-01-01,1957-12-31,year,False,16,
+Southeast Asia (SEATO),1955-75,1955-01-01,1975-12-31,year,False,13,
+Indonesian Confrontation,24 December 1962 to 11 August 1966,1962-12-24,1966-08-11,day,False,22,Indonesian Confrontation
+Malay Peninsula,19 February 1964 to 11 August 1966,1964-02-19,1966-08-11,day,False,2,
+Vietnam War,3 August 1962 to 29 April 1975,1962-08-03,1975-04-29,day,False,524,Vietnam War
+Thailand,25 June 1965 to 31 August 1968,1965-06-25,1968-08-31,day,False,2,
+Irian Jaya (Operation Cenderawasih),1976-81,1976-01-01,1981-12-31,year,False,1,
+Counter Terrorism / Special Recovery,1979-,1979-01-01,,year,True,23,
+Western Sahara (MINURSO),1991-94,1991-01-01,1994-12-31,year,False,1,
+Somalia,20 October 1992 to 30 November 1994,1992-10-20,1994-11-30,day,False,1,
+Border Protection,1997 -,1997-01-01,,year,True,4,
+Bougainville,1997-2003,1997-01-01,2003-12-31,year,False,1,
+East Timor (Operations Faber to Citadel),1999 to 2003,1999-01-01,2003-12-31,year,False,3,East Timor
+East Timor (Operations Spire to Astute),2004-2013,2004-01-01,2013-12-31,year,False,2,East Timor
+Afghanistan,11 October 2001 to 8 October 2021,2001-10-11,2021-10-08,day,False,47,Afghanistan
+Iraq,16 July 2003 to 14 December 2013,2003-07-16,2013-12-14,day,False,5,Second Gulf War (Iraq)
+Solomon Island (RAMSI - Operation Anode),2003-13,2003-01-01,2013-12-31,year,False,1,
+Indonesia (Operation Sumatra Assist),2005,2005-01-01,2005-12-31,year,False,9,
+Fiji,2006,2006-01-01,2006-12-31,year,False,2,
+Greater Middle East,2014 -,2014-01-01,,year,True,4,

@@ -1,0 +1,168 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Waffle chart. Each square is about 500 Australian deaths, coloured by conflict. Source: Australian War Memorial.",
+  "width": "container",
+  "height": "container",
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/awm_deaths_by_conflict.csv"
+      },
+      "transform": [
+        {
+          "calculate": "indexof(['First World War', 'Second World War', 'Boer War', 'Vietnam War', 'Korean War', 'Malayan Emergency'], datum.pop_conflict) >= 0 ? datum.pop_conflict : 'All other conflicts'",
+          "as": "group"
+        },
+        {
+          "aggregate": [
+            {
+              "op": "sum",
+              "field": "deaths",
+              "as": "group_deaths"
+            }
+          ],
+          "groupby": ["group"]
+        },
+        {
+          "calculate": "indexof(['First World War', 'Second World War', 'Boer War', 'Vietnam War', 'Korean War', 'Malayan Emergency', 'All other conflicts'], datum.group)",
+          "as": "order"
+        },
+        {
+          "calculate": "datum.group + ': ' + format(datum.group_deaths, ',')",
+          "as": "label"
+        },
+        {
+          "calculate": "max(1, round(datum.group_deaths / 500))",
+          "as": "squares"
+        },
+        {
+          "calculate": "sequence(datum.squares)",
+          "as": "square_no"
+        },
+        {
+          "flatten": ["square_no"]
+        },
+        {
+          "window": [
+            {
+              "op": "row_number",
+              "as": "position"
+            }
+          ],
+          "sort": [
+            {
+              "field": "order"
+            }
+          ]
+        },
+        {
+          "calculate": "(datum.position - 1) % 24",
+          "as": "col"
+        },
+        {
+          "calculate": "floor((datum.position - 1) / 24)",
+          "as": "row"
+        }
+      ],
+      "mark": {
+        "type": "square",
+        "size": {
+          "expr": "pow(min(width / 24, height / 10) * 0.8, 2)"
+        },
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "col",
+          "type": "ordinal",
+          "axis": null
+        },
+        "y": {
+          "field": "row",
+          "type": "ordinal",
+          "axis": null
+        },
+        "color": {
+          "field": "label",
+          "type": "nominal",
+          "sort": {
+            "field": "order",
+            "op": "min"
+          },
+          "scale": {
+            "range": ["#975b20", "#275267", "#725e44", "#3e1875", "#2788b9", "#dba156", "#9b958a"]
+          },
+          "legend": {
+            "title": "1 square ≈ 500 deaths",
+            "orient": "bottom",
+            "columns": 1,
+            "symbolType": "square",
+            "symbolSize": 140,
+            "rowPadding": 4,
+            "labelLimit": 260,
+            "titleLimit": 240
+          }
+        },
+        "tooltip": [
+          {
+            "field": "group",
+            "type": "nominal",
+            "title": "Conflict"
+          },
+          {
+            "field": "group_deaths",
+            "type": "quantitative",
+            "title": "Australian deaths",
+            "format": ","
+          },
+          {
+            "field": "squares",
+            "type": "quantitative",
+            "title": "Squares drawn"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "col": 10,
+            "row": 9,
+            "note": "↑ Smaller wars: one square each"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 12,
+        "fontStyle": "italic",
+        "color": "#4a473f"
+      },
+      "encoding": {
+        "x": {
+          "field": "col",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "row",
+          "type": "ordinal"
+        },
+        "text": {
+          "field": "note",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  }
+}

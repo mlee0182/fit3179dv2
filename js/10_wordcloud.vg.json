@@ -1,0 +1,95 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Word cloud of the words engraved on Queensland war memorials. Larger words are used more often. Editors' notes in square brackets and common little words are removed.",
+  "width": 1000,
+  "height": 360,
+  "padding": 28,
+  "autosize": "pad",
+  "data": [
+    {
+      "name": "words",
+      "url": "data/qld_memorials.csv",
+      "format": {"type": "csv"},
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "replace(replace(datum.inscription || '', /\\[[^\\]]*\\]/g, ' '), /\\([^)]*\\)/g, ' ')",
+          "as": "clean"
+        },
+        {
+          "type": "countpattern",
+          "field": "clean",
+          "case": "lower",
+          "pattern": "[a-z']{3,}",
+          "stopwords": "^(the|and|for|that|this|with|who|are|was|were|from|have|has|had|they|their|them|our|his|her|its|been|will|not|but|all|you|your|than|whose|which|when|where|these|those|then|there|also|can|may|shall|any|out|into|per|each|both|upon|about|such|only|other|him|she|too|one|two|three|names?|refer|images?|additional|confirmed|reads?|listed|list|plaques?|inscriptions?|page|panel|text|above|below|left|right|side|front|back|top|bottom|reverse|small|large|main|further|see|etc|nil|unit|th|rd|nd|st)$"
+        },
+        {
+          "type": "filter",
+          "expr": "datum.count >= 6"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.count < 25 && length(datum.text) % 3 == 0 ? 90 : 0",
+          "as": "angle"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": {"data": "words", "field": "text"},
+      "range": ["#975b20", "#275267", "#725e44", "#3e1875", "#2788b9", "#7a56db"]
+    }
+  ],
+  "marks": [
+    {
+      "type": "text",
+      "from": {"data": "words"},
+      "encode": {
+        "enter": {
+          "text": {"field": "text"},
+          "align": {
+            "value": "center"
+          },
+          "baseline": {"value": "alphabetic"},
+          "fill": {"scale": "color", "field": "text"},
+          "tooltip": {
+            "signal": "{'Word': datum.text, 'Times used': datum.count}"
+          }
+        },
+        "update": {
+          "fillOpacity": {"value": 1}
+        },
+        "hover": {
+          "fillOpacity": {"value": 0.6}
+        }
+      },
+      "transform": [
+        {
+          "type": "wordcloud",
+          "size": [
+            {
+              "signal": "width"
+            },
+            {
+              "signal": "height"
+            }
+          ],
+          "text": {"field": "text"},
+          "rotate": {
+            "field": "datum.angle"
+          },
+          "font": "Cormorant Garamond",
+          "fontWeight": "700",
+          "fontSize": {
+            "field": "datum.count"
+          },
+          "fontSizeRange": [13, 78],
+          "padding": 3
+        }
+      ]
+    }
+  ]
+}

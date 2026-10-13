@@ -1,0 +1,200 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Venn diagram of the 1,399 Queensland war memorials: how many honour the First World War, the Second World War, both, or neither. Circles are not drawn to scale.",
+  "width": 460,
+  "height": 330,
+  "padding": 4,
+  "view": {"stroke": null},
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {"set": "First World War", "x": 170},
+          {
+            "set": "Second World War",
+            "x": 290
+          }
+        ]
+      },
+      "mark": {"type": "circle", "size": 34000, "opacity": 0.55, "stroke": "#fbf9f4", "strokeWidth": 2},
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+          "scale": null,
+          "axis": null
+        },
+        "y": {"value": 170},
+        "color": {
+          "field": "set",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "First World War",
+              "Second World War"
+            ],
+            "range": ["#975b20", "#275267"]
+          },
+          "legend": null
+        }
+      }
+    },
+    {
+      "data": {"url": "data/qld_memorials.csv"},
+      "transform": [
+        {
+          "calculate": "indexof(datum.conflicts || '', 'First World War') >= 0",
+          "as": "w1"
+        },
+        {
+          "calculate": "indexof(datum.conflicts || '', 'Second World War') >= 0",
+          "as": "w2"
+        },
+        {
+          "calculate": "datum.w1 && datum.w2 ? 'Both wars' : (datum.w1 ? 'Only WWI' : (datum.w2 ? 'Only WWII' : 'Neither world war'))",
+          "as": "region"
+        },
+        {
+          "aggregate": [
+            {
+              "op": "count",
+              "as": "memorials"
+            }
+          ],
+          "groupby": [
+            "region"
+          ]
+        },
+        {
+          "calculate": "datum.region == 'Only WWI' ? 120 : (datum.region == 'Both wars' ? 230 : (datum.region == 'Only WWII' ? 340 : 230))",
+          "as": "px"
+        },
+        {
+          "calculate": "datum.region == 'Neither world war' ? 312 : 165",
+          "as": "py"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 28,
+            "fontWeight": 700,
+            "font": "Source Sans 3, sans-serif"
+          },
+          "encoding": {
+            "x": {
+              "field": "px",
+              "type": "quantitative",
+              "scale": null
+            },
+            "y": {
+              "field": "py",
+              "type": "quantitative",
+              "scale": null
+            },
+            "text": {
+              "field": "memorials",
+              "type": "quantitative",
+              "format": ","
+            },
+            "tooltip": [
+              {
+                "field": "region",
+                "type": "nominal",
+                "title": "Memorials honouring"
+              },
+              {
+                "field": "memorials",
+                "type": "quantitative",
+                "title": "Count",
+                "format": ","
+              }
+            ],
+            "color": {
+              "condition": {
+                "test": "datum.region == 'Both wars'",
+                "value": "#ffffff"
+              },
+              "value": "#2b2a27"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 12,
+            "dy": 24
+          },
+          "encoding": {
+            "x": {
+              "field": "px",
+              "type": "quantitative",
+              "scale": null
+            },
+            "y": {
+              "field": "py",
+              "type": "quantitative",
+              "scale": null
+            },
+            "text": {
+              "field": "region",
+              "type": "nominal"
+            },
+            "color": {
+              "condition": {
+                "test": "datum.region == 'Both wars'",
+                "value": "#ffffff"
+              },
+              "value": "#2b2a27"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "data": {"url": "data/qld_memorials.csv"},
+      "transform": [
+        {
+          "calculate": "indexof(datum.conflicts || '', 'First World War') >= 0 ? 1 : 0",
+          "as": "First World War"
+        },
+        {
+          "calculate": "indexof(datum.conflicts || '', 'Second World War') >= 0 ? 1 : 0",
+          "as": "Second World War"
+        },
+        {
+          "aggregate": [
+            {"op": "sum", "field": "First World War", "as": "First World War"},
+            {
+              "op": "sum",
+              "field": "Second World War",
+              "as": "Second World War"
+            }
+          ]
+        },
+        {"fold": [ "First World War", "Second World War" ], "as": ["set", "total"]},
+        {"calculate": "datum.set == 'First World War' ? 105 : 355", "as": "px"},
+        {"calculate": "datum.set + ': ' + format(datum.total, ',')", "as": "title"}
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 13,
+        "fontWeight": 600,
+        "color": "#2b2a27",
+        "y": 16
+      },
+      "encoding": {
+        "x": {
+          "field": "px",
+          "type": "quantitative",
+          "scale": null
+        },
+        "text": {
+          "field": "title",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Treemap of memorial types in the national register (Places of Pride). Area is the number of entries. Types are grouped into five families.",
+  "width": 1000,
+  "height": 430,
+  "padding": 0,
+  "autosize": "none",
+  "data": [
+    {
+      "name": "types",
+      "url": "data/pop_memorials_by_type.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "count": "number"
+        }
+      },
+      "transform": [
+        {"type": "formula", "expr": "datum.family + '/' + datum.memorial_type", "as": "id"},
+        {
+          "type": "formula",
+          "expr": "datum.family",
+          "as": "parent"
+        }
+      ]
+    },
+    {
+      "name": "families",
+      "source": "types",
+      "transform": [
+        {"type": "aggregate", "groupby": ["family"], "ops": ["sum"], "fields": [ "count" ], "as": ["total"]},
+        {"type": "formula", "expr": "datum.family", "as": "id"},
+        {
+          "type": "formula",
+          "expr": "'root'",
+          "as": "parent"
+        }
+      ]
+    },
+    {
+      "name": "tree_root",
+      "values": [
+        {"id": "root"}
+      ]
+    },
+    {
+      "name": "tree",
+      "source": ["tree_root", "families", "types"],
+      "transform": [
+        {
+          "type": "stratify",
+          "key": "id",
+          "parentKey": "parent"
+        },
+        {
+          "type": "treemap",
+          "field": "count",
+          "sort": {
+            "field": "value",
+            "order": "descending"
+          },
+          "method": "squarify",
+          "round": true,
+          "paddingInner": 2,
+          "paddingOuter": 2,
+          "paddingTop": 24,
+          "size": [
+            {
+              "signal": "width"
+            },
+            {
+              "signal": "height"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "leaves",
+      "source": "tree",
+      "transform": [
+        {"type": "filter", "expr": "datum.depth == 2"}
+      ]
+    },
+    {
+      "name": "frames",
+      "source": "tree",
+      "transform": [
+        {"type": "filter", "expr": "datum.depth == 1"}
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "fill",
+      "type": "ordinal",
+      "domain": [
+        "Rolls and boards",
+        "Monuments",
+        "Buildings",
+        "Trees, parks and gardens",
+        "Other"
+      ],
+      "range": ["#b8281c", "#cdc5b1", "#d9d2c0", "#d0cfc8", "#e6e0d1"]
+    }
+  ],
+  "marks": [
+    {
+      "type": "rect",
+      "from": {"data": "frames"},
+      "encode": {
+        "enter": {
+          "x": {"field": "x0"},
+          "y": {"field": "y0"},
+          "x2": {"field": "x1"},
+          "y2": {"field": "y1"},
+          "fill": {"scale": "fill", "field": "family"},
+          "fillOpacity": {"value": 0.18},
+          "stroke": {"value": "#fbf9f4"},
+          "strokeWidth": {"value": 2}
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "from": {"data": "leaves"},
+      "encode": {
+        "enter": {
+          "x": {"field": "x0"},
+          "y": {"field": "y0"},
+          "x2": {"field": "x1"},
+          "y2": {"field": "y1"},
+          "fill": {"scale": "fill", "field": "family"},
+          "stroke": {"value": "#fbf9f4"},
+          "strokeWidth": {"value": 1.5},
+          "tooltip": {
+            "signal": "{'Memorial type': datum.memorial_type, 'Family (author grouping)': datum.family, 'Entries': format(datum.count, ',')}"
+          }
+        },
+        "hover": {
+          "stroke": {"value": "#2b2a27"},
+          "strokeWidth": {"value": 2}
+        },
+        "update": {
+          "stroke": {"value": "#fbf9f4"},
+          "strokeWidth": {"value": 1.5}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {"data": "frames"},
+      "encode": {
+        "enter": {
+          "x": {"field": "x0", "offset": 7},
+          "y": {"field": "y0", "offset": 16},
+          "text": {
+            "signal": "upper(datum.family) + '  ·  ' + format(datum.total, ',')"
+          },
+          "fontSize": {"value": 11},
+          "fontWeight": {"value": "bold"},
+          "font": {
+            "value": "Source Sans 3, sans-serif"
+          },
+          "fill": {"value": "#2b2a27"},
+          "limit": {
+            "signal": "datum.x1 - datum.x0 - 10"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {"data": "leaves"},
+      "encode": {
+        "enter": {
+          "x": {"field": "x0", "offset": 6},
+          "y": {"field": "y0", "offset": 15},
+          "text": {
+            "signal": "(datum.x1 - datum.x0 > 52 && datum.y1 - datum.y0 > 26) ? datum.memorial_type : ''"
+          },
+          "fontSize": {"value": 12},
+          "font": {
+            "value": "Source Sans 3, sans-serif"
+          },
+          "fontWeight": {"value": 600},
+          "fill": {
+            "signal": "datum.family == 'Rolls and boards' ? '#ffffff' : '#2b2a27'"
+          },
+          "limit": {
+            "signal": "datum.x1 - datum.x0 - 10"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {"data": "leaves"},
+      "encode": {
+        "enter": {
+          "x": {"field": "x0", "offset": 6},
+          "y": {"field": "y0", "offset": 30},
+          "text": {
+            "signal": "(datum.x1 - datum.x0 > 52 && datum.y1 - datum.y0 > 40) ? format(datum.count, ',') : ''"
+          },
+          "fontSize": {"value": 11},
+          "font": {
+            "value": "Source Sans 3, sans-serif"
+          },
+          "fill": {
+            "signal": "datum.family == 'Rolls and boards' ? '#ffffff' : '#4a473f'"
+          }
+        }
+      }
+    }
+  ]
+}

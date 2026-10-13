@@ -1,0 +1,211 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Choropleth map. Each council is shaded by the percentage of its war memorials that honour the selected war. Councils with fewer than ten memorials are left pale because a percentage from so few would be misleading.",
+  "width": "container",
+  "height": 560,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "params": [
+    {
+      "name": "conflict",
+      "value": "First World War"
+    }
+  ],
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [-14, -25],
+    "rotate": [-146, 0]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/qld_councils.json",
+        "format": {
+          "type": "topojson",
+          "feature": "qld_lga"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "'No memorials in the register'",
+          "as": "note"
+        }
+      ],
+      "mark": {"type": "geoshape", "fill": "#e9e4d6", "stroke": "#fbf9f4", "strokeWidth": 0.6},
+      "encoding": {
+        "tooltip": [
+          {
+            "field": "properties.LGA_NAME",
+            "type": "nominal",
+            "title": "Council"
+          },
+          {
+            "field": "note",
+            "type": "nominal",
+            "title": " "
+          }
+        ]
+      }
+    },
+    {
+      "data": {"url": "data/qld_memorials.csv"},
+      "transform": [
+        {
+          "calculate": "indexof(datum.conflicts || '', conflict) >= 0 ? 1 : 0",
+          "as": "hit"
+        },
+        {
+          "aggregate": [
+            {
+              "op": "mean",
+              "field": "hit",
+              "as": "share"
+            },
+            {"op": "sum", "field": "hit", "as": "hits"},
+            {
+              "op": "count",
+              "as": "memorials"
+            }
+          ],
+          "groupby": [
+            "lga_name"
+          ]
+        },
+        {
+          "calculate": "datum.share * 100",
+          "as": "percent"
+        },
+        {
+          "lookup": "lga_name",
+          "from": {
+            "data": {
+              "url": "data/qld_councils.json",
+              "format": {
+                "type": "topojson",
+                "feature": "qld_lga"
+              }
+            },
+            "key": "properties.LGA_NAME"
+          },
+          "as": "geo"
+        }
+      ],
+      "layer": [
+        {
+          "transform": [
+            {"filter": "datum.memorials < 10"}
+          ],
+          "mark": {"type": "geoshape", "fill": "#d6d0bf", "stroke": "#fbf9f4", "strokeWidth": 0.6},
+          "encoding": {
+            "shape": {
+              "field": "geo",
+              "type": "geojson"
+            },
+            "tooltip": [
+              {
+                "field": "lga_name",
+                "type": "nominal",
+                "title": "Council"
+              },
+              {
+                "field": "memorials",
+                "type": "quantitative",
+                "title": "Memorials (too few to compare)"
+              }
+            ]
+          }
+        },
+        {
+          "transform": [
+            {"filter": "datum.memorials >= 10"}
+          ],
+          "mark": {"type": "geoshape"},
+          "encoding": {
+            "shape": {
+              "field": "geo",
+              "type": "geojson"
+            },
+            "color": {
+              "field": "percent",
+              "type": "quantitative",
+              "scale": {
+                "type": "threshold",
+                "domain": [20, 40, 60, 80],
+                "range": ["#f3ecdc", "#e4d1a6", "#cba86a", "#a47a33", "#6b4a14"]
+              },
+              "legend": {
+                "title": [
+                  "% of memorials",
+                  "honouring the",
+                  "selected war"
+                ],
+                "orient": "top-right",
+                "type": "symbol",
+                "symbolType": "square",
+                "symbolSize": 180,
+                "format": ".0f"
+              }
+            },
+            "tooltip": [
+              {
+                "field": "lga_name",
+                "type": "nominal",
+                "title": "Council"
+              },
+              {
+                "field": "hits",
+                "type": "quantitative",
+                "title": "Honouring this war"
+              },
+              {
+                "field": "memorials",
+                "type": "quantitative",
+                "title": "All memorials"
+              },
+              {
+                "field": "percent",
+                "type": "quantitative",
+                "title": "Share (%)",
+                "format": ".0f"
+              }
+            ],
+            "stroke": {
+              "condition": {
+                "param": "council_hover",
+                "empty": false,
+                "value": "#2b2a27"
+              },
+              "value": "#fbf9f4"
+            },
+            "strokeWidth": {
+              "condition": {
+                "param": "council_hover",
+                "empty": false,
+                "value": 2
+              },
+              "value": 0.6
+            }
+          },
+          "params": [
+            {
+              "name": "council_hover",
+              "select": {
+                "type": "point",
+                "fields": [
+                  "lga_name"
+                ],
+                "on": "mouseover",
+                "clear": "mouseout"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}

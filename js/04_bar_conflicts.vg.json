@@ -1,0 +1,121 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bar chart of how many memorials in the national register (Places of Pride) are tagged with each specific war.",
+  "width": "container",
+  "height": {"step": 26},
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "padding": {"top": 6, "left": 36, "right": 12, "bottom": 6},
+  "data": {
+    "url": "data/pop_memorials_by_conflict.csv"
+  },
+  "transform": [
+    {
+      "filter": "toString(datum.is_specific_war) == 'True' || datum.is_specific_war === true"
+    },
+    {
+      "calculate": "indexof(['First World War', 'Second World War', 'Boer War', 'Vietnam War', 'Korean War', 'Malayan Emergency', 'Indonesian Confrontation'], datum.conflict) >= 0 ? datum.conflict : 'Other wars'",
+      "as": "war"
+    },
+    {
+      "calculate": "format(datum.count, ',') + (datum.conflict == 'Malayan Emergency' ? '  —  more tags than the Boer War' : '')",
+      "as": "label"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "conflict",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null,
+      "axis": {
+        "domain": false,
+        "ticks": false,
+        "labelLimit": 200
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "height": {
+          "band": 0.7
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Memorial tags in the national register",
+          "axis": {
+            "format": ",.0f",
+            "grid": true,
+            "tickCount": 5
+          }
+        },
+        "color": {
+          "field": "war",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "First World War",
+              "Second World War",
+              "Boer War",
+              "Vietnam War",
+              "Korean War",
+              "Malayan Emergency",
+              "Indonesian Confrontation",
+              "Other wars"
+            ],
+            "range": ["#975b20", "#275267", "#725e44", "#3e1875", "#2788b9", "#dba156", "#7a56db", "#9b958a"]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "conflict_full",
+            "type": "nominal",
+            "title": "Conflict"
+          },
+          {
+            "field": "count",
+            "type": "quantitative",
+            "title": "Memorials tagged",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "fontSize": 12,
+        "fontWeight": 600,
+        "color": "#2b2a27"
+      },
+      "encoding": {
+        "x": {
+          "field": "count",
+          "type": "quantitative",
+          "axis": {
+            "format": ",.0f",
+            "grid": true,
+            "tickCount": 5
+          }
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}

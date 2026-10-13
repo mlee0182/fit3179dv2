@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>How Australia Remembers</title>
+  <meta name="description" content="What did war cost Australia, and does the way Australia remembers match the cost? An interactive data story using the Australian War Memorial and Queensland war memorial registers.">
+
+  <!-- Vega, Vega-Lite and Vega-Embed (pinned versions) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.21.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0"></script>
+
+  <!-- Pure.css grid (as used in the Week 9 studio) -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css">
+
+  <!-- Fonts: Cormorant Garamond (headings) and Source Sans 3 (text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<div class="page">
+
+  <!-- ===== Title ===== -->
+  <header class="hero">
+    <p class="kicker">FIT3179 Data Visualisation 2</p>
+    <h1>How Australia Remembers</h1>
+    <p class="lede">War cost Australia over 100,000 lives.<br>Does the way it remembers match that cost?</p>
+  </header>
+
+  <section class="intro">
+    <div class="pure-g">
+      <div class="pure-u-1 pure-u-lg-2-5">
+        <div class="text">
+          <p>War memorials stand in communities across Australia.
+            Some honour wars fought close to Malaysia.</p>
+          <p>Australians served in the <strong>Malayan Emergency</strong> (1948&ndash;1960).
+            They also served in the <strong>Indonesian Confrontation</strong>,
+            or <em>Konfrontasi</em> (1962&ndash;1966).</p>
+          <p>This page follows four questions.
+            What did war cost, and what shapes does remembering take?
+            Where does it happen, and does it follow the cost?</p>
+        </div>
+      </div>
+      <div class="pure-u-1 pure-u-lg-3-5">
+        <ul class="stats">
+          <li><span class="stat-number">103,139</span>
+            <span class="stat-label">Australian war deaths counted by the Australian War Memorial</span></li>
+          <li><span class="stat-number">12,935</span>
+            <span class="stat-label">memorials in Australia's national register</span></li>
+          <li><span class="stat-number">1,399</span>
+            <span class="stat-label">memorials in Queensland's register, with map locations</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Chapter 1 ===== -->
+  <section class="chapter" id="cost">
+    <div class="chapter-head pure-g">
+      <div class="pure-u-1 pure-u-lg-2-5"><h2><span class="chapter-number">1</span>The cost</h2></div>
+      <div class="pure-u-1 pure-u-lg-3-5">
+        <p class="lead">The Australian War Memorial (AWM) counts Australia's war dead.
+          Its table covers 36 conflicts and deployments since 1860.</p>
+      </div>
+    </div>
+
+    <figure class="chart-block">
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-lg-2-5">
+          <div class="side">
+            <h3 class="insight">Two wars account for 98% of Australian war deaths</h3>
+            <button class="howto-button" aria-expanded="false" aria-controls="howto-waffle" data-target="howto-waffle">How to read this chart</button>
+            <ul class="howto" id="howto-waffle">
+              <li>Each square is about 500 deaths.</li>
+              <li>Squares fill from top left, one war at a time.</li>
+              <li>Small wars get one square so they stay visible.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pure-u-1 pure-u-lg-3-5">
+          <div id="chart-waffle" class="chart"></div>
+          <figcaption>
+            <span>Source: Australian War Memorial (AWM), casualty table.</span>
+            <span>First and Second World Wars: 101,385 of 103,139 deaths.</span>
+          </figcaption>
+        </div>
+      </div>
+    </figure>
+
+    <figure class="chart-block">
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-lg-2-5">
+          <div class="side">
+            <h3 class="insight">The longest conflicts were not the deadliest</h3>
+            <div class="text">
+              <p>Afghanistan lasted 20 years and cost 47 lives.
+                The Malayan Emergency ran for 12 years and cost 39.</p>
+              <p>The First World War ran under seven years.
+                It cost 61,727 lives.</p>
+            </div>
+          </div>
+        </div>
+        <div class="pure-u-1 pure-u-lg-3-5">
+          <div id="chart-gantt" class="chart"></div>
+          <figcaption>
+            <span>Source: Australian War Memorial (AWM).</span>
+            <span>Bars show the AWM's official service periods.</span>
+            <span>Only wars also in the national register are shown.</span>
+          </figcaption>
+        </div>
+      </div>
+    </figure>
+  </section>
+
+  <!-- ===== Chapter 2 ===== -->
+  <section class="chapter" id="forms">
+    <div class="chapter-head pure-g">
+      <div class="pure-u-1 pure-u-lg-2-5"><h2><span class="chapter-number">2</span>What Australia builds</h2></div>
+      <div class="pure-u-1 pure-u-lg-3-5">
+        <p class="lead">Places of Pride is Australia's national register of war memorials.
+          The Australian War Memorial runs it.
+          Anyone can add an entry, so it keeps growing.
+          On 12 October 2026 it held 12,935 memorials.</p>
+      </div>
+    </div>
+
+    <figure class="chart-block">
+      <h3 class="insight">Nearly half of recorded memorial types are lists of names</h3>
+      <button class="howto-button" aria-expanded="false" aria-controls="howto-treemap" data-target="howto-treemap">How to read this chart</button>
+      <ul class="howto" id="howto-treemap">
+        <li>Rectangle area shows the count of each type.</li>
+        <li>Boxes group memorial types into five families.</li>
+        <li>The family grouping is the author's own.</li>
+      </ul>
+      <div id="chart-treemap" class="chart"></div>
+      <figcaption>
+        <span>Source: Places of Pride register, 12 October 2026.</span>
+        <span>Type counts add up to 12,259 entries.</span>
+        <span>5,852 (48%) are rolls and boards.</span>
+        <span>Entries may overlap if a memorial has several types.</span>
+      </figcaption>
+    </figure>
+
+    <figure class="chart-block">
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-lg-2-5">
+          <div class="side">
+            <h3 class="insight">The First World War has over four times Vietnam's memorials</h3>
+            <div class="text">
+              <p>Each memorial is tagged with the wars it honours.
+                One memorial can carry several tags.</p>
+              <p>The Malayan Emergency has 420 tags, yet only 39 deaths.</p>
+            </div>
+          </div>
+        </div>
+        <div class="pure-u-1 pure-u-lg-3-5">
+          <div id="chart-bar" class="chart"></div>
+          <figcaption>
+            <span>Source: Places of Pride, 12 October 2026.</span>
+            <span>1,408 more memorials honour all wars in general.</span>
+            <span>1,432 are tagged &ldquo;Other&rdquo;. Neither is shown.</span>
+          </figcaption>
+        </div>
+      </div>
+    </figure>
+  </section>
+
+  <!-- ===== Chapter 3 ===== -->
+  <section class="chapter" id="where">
+    <div class="chapter-head pure-g">
+      <div class="pure-u-1 pure-u-lg-2-5"><h2><span class="chapter-number">3</span>Where it is remembered</h2></div>
+      <div class="pure-u-1 pure-u-lg-3-5">
+        <p class="lead">The national register has no map locations.
+          So this chapter looks at Queensland, which publishes coordinates.
+          Its register covers 1,399 memorials, recorded up to December 2019.
+          They appear in 66 of the state's 78 councils.</p>
+      </div>
+    </div>
+
+    <div class="map-group">
+      <div class="war-choice" role="group" aria-label="Choose a war to highlight on both maps">
+        <div class="war-buttons">
+          <button type="button" data-war="First World War" aria-pressed="true">First World War</button>
+          <button type="button" data-war="Second World War" aria-pressed="false">Second World War</button>
+          <button type="button" data-war="Korean War" aria-pressed="false">Korean War</button>
+          <button type="button" data-war="Malayan Emergency" aria-pressed="false">Malayan Emergency</button>
+          <button type="button" data-war="Vietnam War" aria-pressed="false">Vietnam War</button>
+        </div>
+        <p class="war-readout" aria-live="polite"><strong id="war-count">761</strong> memorials
+          (<span id="war-share">54</span>%) honour the <span class="selected-war">First World War</span>.</p>
+      </div>
+
+      <div class="pure-g map-row">
+        <div class="pure-u-1 pure-u-lg-1-2">
+          <figure class="chart-block">
+            <h3 class="insight">Each dot is one memorial</h3>
+            <p class="chart-sub">Red dots honour the <strong class="selected-war">First World War</strong>.</p>
+            <p class="chart-note"><span>1,392 of 1,399 memorials have usable coordinates.</span>
+              <span>One memorial can honour several wars.</span>
+              <span>Source: Queensland Government war memorial register.</span></p>
+            <div id="chart-dot" class="chart"></div>
+          </figure>
+        </div>
+        <div class="pure-u-1 pure-u-lg-1-2">
+          <figure class="chart-block">
+            <h3 class="insight">Councils remember different wars</h3>
+            <p class="chart-sub">Share of memorials honouring the <strong class="selected-war">First World War</strong>.</p>
+            <p class="chart-note"><span>Shares rather than counts keep councils comparable.</span>
+              <span>Pale grey councils have fewer than ten memorials.</span>
+              <span>Cream councils have none in the register.</span>
+              <span>Memorials are placed in 2025 council boundaries.</span></p>
+            <div id="chart-choropleth" class="chart"></div>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="pure-g map-row">
+      <div class="pure-u-1 pure-u-lg-1-2">
+        <figure class="chart-block">
+          <h3 class="insight">Brisbane has by far the most memorials</h3>
+          <p class="chart-sub">Circle area shows memorials per council.</p>
+            <p class="chart-note"><span>Brisbane has 269; Toowoomba, next, has 99.</span>
+            <span>Each circle sits at its council's average memorial location.</span></p>
+          <div id="chart-symbol" class="chart"></div>
+        </figure>
+      </div>
+      <div class="pure-u-1 pure-u-lg-1-2">
+        <figure class="chart-block">
+          <h3 class="insight">Memorials crowd into the south-east corner</h3>
+          <p class="chart-sub">Counts in equal hexagons, each about 70&nbsp;km wide.</p>
+            <p class="chart-note"><span>Equal-sized hexagons stop crowded dots hiding each other.</span></p>
+          <div id="chart-bin" class="chart"></div>
+        </figure>
+      </div>
+    </div>
+
+    <figure class="chart-block">
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-lg-2-5">
+          <div class="side">
+            <h3 class="insight">Honour boards for the First World War; later wars, stone</h3>
+            <div class="text">
+              <p>Each column is one war and adds up to 100%.</p>
+              <p>Honour boards are 27% of First World War memorials.
+                For the Vietnam War, they are only 7%.</p>
+              <p>Stone monuments rise from 17% to 36% for Vietnam.
+                For the Malayan Emergency, they reach 40%.</p>
+            </div>
+            <button class="howto-button" aria-expanded="false" aria-controls="howto-heatmap" data-target="howto-heatmap">How to read this chart</button>
+            <ul class="howto" id="howto-heatmap">
+              <li>Find a war on top, a type at left.</li>
+              <li>Darker squares mean a bigger share.</li>
+              <li>Black outlines mark the numbers quoted.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pure-u-1 pure-u-lg-3-5">
+          <div id="chart-heatmap" class="chart"></div>
+          <figcaption>
+            <span>Source: Queensland war memorial register.</span>
+            <span>Wars with under 50 memorials are left out.</span>
+          </figcaption>
+        </div>
+      </div>
+    </figure>
+
+    <figure class="chart-block">
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-lg-2-5">
+          <div class="side">
+            <h3 class="insight">429 memorials honour both world wars, more than either alone</h3>
+            <div class="text">
+              <p>Each circle holds the memorials honouring one world war.
+                The overlap holds those honouring both.</p>
+              <p>So the two wars are often remembered together.</p>
+            </div>
+          </div>
+        </div>
+        <div class="pure-u-1 pure-u-lg-3-5">
+          <div id="chart-venn" class="chart chart-venn"></div>
+          <figcaption>
+            <span>332 honour only the First World War.</span>
+            <span>365 honour only the Second World War.</span>
+            <span>273 honour neither world war.</span>
+            <span>266 of them name other wars; 7 name none.</span>
+            <span>Circles are not drawn to scale.</span>
+          </figcaption>
+        </div>
+      </div>
+    </figure>
+
+    <figure class="chart-block">
+      <h3 class="insight">Carved words speak of honour, memory and sacrifice</h3>
+      <div id="chart-wordcloud" class="chart"></div>
+      <figcaption>
+        <span>Larger words appear more often on memorials.</span>
+        <span>Editors' notes and everyday words like &ldquo;the&rdquo; are removed.</span>
+        <span>Cataloguing words such as &ldquo;names&rdquo; are removed too.</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ===== Chapter 4 ===== -->
+  <section class="chapter" id="match">
+    <div class="chapter-head pure-g">
+      <div class="pure-u-1 pure-u-lg-2-5"><h2><span class="chapter-number">4</span>Does memory match the cost?</h2></div>
+      <div class="pure-u-1 pure-u-lg-3-5">
+        <p class="lead">Compare each war's share of deaths and of memorial mentions.
+          If memory followed cost, every line would be flat.</p>
+      </div>
+    </div>
+
+    <figure class="chart-block">
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-lg-2-5">
+          <div class="side">
+            <h3 class="insight">The world wars are remembered less than their cost</h3>
+            <div class="text">
+              <p>The First World War caused 60% of deaths.
+                It receives only 40% of mentions.</p>
+              <p>Vietnam caused 0.5% of deaths but gets 8.7%.
+                The Malayan Emergency caused 0.04% and gets 3.6%.</p>
+              <p>Later wars are remembered more than their cost.</p>
+            </div>
+            <button class="howto-button" aria-expanded="false" aria-controls="howto-slope" data-target="howto-slope">How to read this chart</button>
+            <ul class="howto" id="howto-slope">
+              <li>Each line is one war.</li>
+              <li>Left end: share of all deaths.</li>
+              <li>Right end: share of memorial mentions.</li>
+              <li>Down means remembered less than its cost.</li>
+              <li>Up means remembered more than its cost.</li>
+              <li>Hover a grey line to name its war.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pure-u-1 pure-u-lg-3-5">
+          <div id="chart-slope" class="chart"></div>
+          <figcaption>
+            <span>Sources: AWM (deaths) and Places of Pride (mentions).</span>
+            <span>Grey lines are the other nine wars.</span>
+            <span>Shares are out of the 14 named wars only.</span>
+            <span>That is 102,976 deaths and 11,607 memorial tags.</span>
+            <span>One memorial can carry several tags.</span>
+          </figcaption>
+        </div>
+      </div>
+    </figure>
+
+    <div class="conclusion pure-g">
+      <div class="pure-u-1 pure-u-lg-2-5"><h3>What the data can and cannot tell us</h3></div>
+      <div class="pure-u-1 pure-u-lg-3-5">
+        <div class="text">
+          <p>Memorial counts show how often a war is commemorated.
+            They do not measure how important a war was.</p>
+          <p>The data cannot say why later wars are remembered more.</p>
+          <p>Remembering is a choice made town by town.
+            It reflects the cost of war, but not only that.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Key terms ===== -->
+  <section class="glossary">
+    <div class="chapter-head pure-g">
+      <div class="pure-u-1 pure-u-lg-2-5"><h2>Key terms</h2></div>
+      <div class="pure-u-1 pure-u-lg-3-5">
+        <dl>
+        <div><dt>Australian War Memorial (AWM)</dt> <dd>Australia's national war museum and memorial, in Canberra.</dd></div>
+        <div><dt>Honour board, honour roll</dt> <dd>A list naming people from a community who served.</dd></div>
+        <div><dt>Cenotaph</dt> <dd>A monument to people buried elsewhere.</dd></div>
+        <div><dt>Malayan Emergency</dt> <dd>The 1948&ndash;1960 conflict in Malaya, where Australian forces served.</dd></div>
+        <div><dt>Indonesian Confrontation</dt> <dd>The 1962&ndash;1966 conflict over Malaysia's formation, called <em>Konfrontasi</em>.</dd></div>
+        <div><dt>Council</dt> <dd>Local government for a town, city or district.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Data sources ===== -->
+  <footer class="about">
+    <div class="chapter-head pure-g">
+      <div class="pure-u-1 pure-u-lg-2-5"><h2>Data sources</h2></div>
+      <div class="pure-u-1 pure-u-lg-3-5">
+        <div class="source">
+          <strong>Deaths by conflict</strong>
+          Australian War Memorial, <em>Deaths as a result of service with Australian units</em>.
+          Downloaded October 2026.
+          <a href="https://www.awm.gov.au/articles/encyclopedia/war_casualties">awm.gov.au</a>
+        </div>
+        <div class="source">
+          <strong>National register</strong>
+          Australian War Memorial, <em>Places of Pride: National Register of War Memorials</em>.
+          Counts read on 12 October 2026.
+          <a href="https://placesofpride.awm.gov.au/memorials">placesofpride.awm.gov.au</a>
+        </div>
+        <div class="source">
+          <strong>Queensland register</strong>
+          Queensland Government, <em>War memorial sites in Queensland</em>.
+          Records up to December 2019. Downloaded October 2026.
+          <a href="https://www.data.qld.gov.au/dataset/war-memorial-sites-in-queensland">data.qld.gov.au/dataset/war-memorial-sites-in-queensland</a>
+        </div>
+        <div class="source">
+          <strong>Council boundaries</strong>
+          Australian Bureau of Statistics, ASGS Edition 3, Local Government Areas 2025 (CC BY 4.0).
+          <a href="https://geo.abs.gov.au/arcgis/rest/services/ASGS2025/LGA/MapServer">geo.abs.gov.au</a>
+        </div>
+      </div>
+    </div>
+    <p class="credit">
+      <span>Max Lee Hao Chern</span>
+    </p>
+  </footer>
+
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

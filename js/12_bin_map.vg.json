@@ -1,0 +1,148 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Hexagon bin map. Memorials are grouped into equal-sized hexagons so crowded areas such as Brisbane can be compared fairly with the bush.",
+  "width": "container",
+  "height": 560,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [-14, -25],
+    "rotate": [-146, 0]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/qld_councils.json",
+        "format": {
+          "type": "topojson",
+          "feature": "qld_lga"
+        }
+      },
+      "mark": {"type": "geoshape", "fill": "#e9e4d6", "stroke": "#fbf9f4", "strokeWidth": 0.6}
+    },
+    {
+      "data": {"url": "data/qld_memorials.csv"},
+      "transform": [
+        {
+          "filter": "lower(toString(datum.coords_ok)) == 'true'"
+        },
+        {
+          "calculate": "(sqrt(3) / 3 * datum.longitude - datum.latitude / 3) / 0.4",
+          "as": "fq"
+        },
+        {"calculate": "(2 / 3 * datum.latitude) / 0.4", "as": "fr"},
+        {"calculate": "-datum.fq - datum.fr", "as": "fs"},
+        {
+          "calculate": "round(datum.fq)",
+          "as": "rq"
+        },
+        {
+          "calculate": "round(datum.fr)",
+          "as": "rr"
+        },
+        {
+          "calculate": "round(datum.fs)",
+          "as": "rs"
+        },
+        {"calculate": "abs(datum.rq - datum.fq)", "as": "dq"},
+        {"calculate": "abs(datum.rr - datum.fr)", "as": "dr"},
+        {"calculate": "abs(datum.rs - datum.fs)", "as": "ds"},
+        {"calculate": "(datum.dq > datum.dr && datum.dq > datum.ds) ? -datum.rr - datum.rs : datum.rq", "as": "hq"},
+        {
+          "calculate": "(datum.dq > datum.dr && datum.dq > datum.ds) ? datum.rr : ((datum.dr > datum.ds) ? -datum.rq - datum.rs : datum.rr)",
+          "as": "hr"
+        },
+        {
+          "aggregate": [
+            {
+              "op": "count",
+              "as": "memorials"
+            }
+          ],
+          "groupby": ["hq", "hr"]
+        },
+        {"calculate": "0.4 * sqrt(3) * (datum.hq + datum.hr / 2)", "as": "cx"},
+        {"calculate": "0.4 * 1.5 * datum.hr", "as": "cy"},
+        {"calculate": "0.4 * cos(PI / 6)", "as": "half_w"},
+        {
+          "calculate": "{'type': 'Polygon', 'coordinates': [[[datum.cx + datum.half_w, datum.cy + 0.2], [datum.cx + datum.half_w, datum.cy - 0.2], [datum.cx, datum.cy - 0.4], [datum.cx - datum.half_w, datum.cy - 0.2], [datum.cx - datum.half_w, datum.cy + 0.2], [datum.cx, datum.cy + 0.4], [datum.cx + datum.half_w, datum.cy + 0.2]]]}",
+          "as": "hexagon"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {"type": "geoshape", "stroke": "#fbf9f4", "strokeWidth": 0.5},
+          "encoding": {
+            "shape": {
+              "field": "hexagon",
+              "type": "geojson"
+            },
+            "color": {
+              "field": "memorials",
+              "type": "quantitative",
+              "scale": {
+                "type": "threshold",
+                "domain": [2, 5, 10, 25, 50],
+                "range": ["#efd5bd", "#e8b79a", "#d99a80", "#c4604a", "#a32a1c", "#5e0f08"]
+              },
+              "legend": {
+                "title": [
+                  "Memorials in",
+                  "each hexagon"
+                ],
+                "orient": "top-right",
+                "type": "symbol",
+                "symbolType": "square",
+                "symbolSize": 180
+              }
+            },
+            "tooltip": [
+              {
+                "field": "memorials",
+                "type": "quantitative",
+                "title": "Memorials in this hexagon"
+              }
+            ]
+          }
+        },
+        {
+          "transform": [
+            {"filter": "datum.memorials >= 100"},
+            {
+              "calculate": "datum.memorials + ' memorials'",
+              "as": "note"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 24,
+            "fontSize": 12,
+            "fontWeight": 600,
+            "color": "#2b2a27"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "cx",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "cy",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "note",
+              "type": "nominal"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}

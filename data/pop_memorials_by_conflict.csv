@@ -1,0 +1,19 @@
+conflict,conflict_full,start_year,end_year,count,is_specific_war,retrieved
+Sudan,"Sudan, March–June 1885",1885,1885,27,True,2026-10-12
+Boer War,"South African War (Boer War), 1899–1902",1899,1902,375,True,2026-10-12
+Boxer Rebellion,"China (Boxer Rebellion), 1900–01",1900,1901,26,True,2026-10-12
+First World War,"First World War, 1914–18",1914,1918,4614,True,2026-10-12
+Second World War,"Second World War, 1939–45",1939,1945,3496,True,2026-10-12
+Peacekeeping,"Peacekeeping, 1947–present",1947,,234,False,2026-10-12
+Korean War,"Korean War, 1950–53",1950,1953,709,True,2026-10-12
+Malayan Emergency,"Malayan Emergency, 1950–60",1950,1960,420,True,2026-10-12
+Thai-Malay,"Thai-Malay, 1960-1964",1960,1964,8,True,2026-10-12
+Vietnam War,"Vietnam War, 1962–75",1962,1975,1010,True,2026-10-12
+Indonesian Confrontation,"Indonesian Confrontation, 1963–66",1963,1966,271,True,2026-10-12
+First Gulf War,"Iraq: the First Gulf War, 1990–91",1990,1991,165,True,2026-10-12
+East Timor,"East Timor, 1999-2013",1999,2013,127,True,2026-10-12
+Afghanistan,"Afghanistan, 2001-2021",2001,2021,194,True,2026-10-12
+Second Gulf War (Iraq),"Iraq: the Second Gulf War, 2003–09",2003,2009,165,True,2026-10-12
+National Service,National Service,,,140,False,2026-10-12
+All conflicts (general),All,,,1408,False,2026-10-12
+Other,Other,,,1432,False,2026-10-12

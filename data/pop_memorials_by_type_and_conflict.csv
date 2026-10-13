@@ -1,0 +1,739 @@
+memorial_type,family,conflict,start_year,count,share_of_type_pct,retrieved
+"Memorial Buildings, Gardens and Areas",Buildings,Sudan,1885,1,0.2,2026-10-12
+"Memorial Buildings, Gardens and Areas",Buildings,Boer War,1899,6,1.2,2026-10-12
+"Memorial Buildings, Gardens and Areas",Buildings,Boxer Rebellion,1900,0,0.0,2026-10-12
+"Memorial Buildings, Gardens and Areas",Buildings,First World War,1914,79,15.8,2026-10-12
+"Memorial Buildings, Gardens and Areas",Buildings,Second World War,1939,93,18.6,2026-10-12
+"Memorial Buildings, Gardens and Areas",Buildings,Peacekeeping,1947,3,0.6,2026-10-12
+"Memorial Buildings, Gardens and Areas",Buildings,Korean War,1950,13,2.6,2026-10-12
+"Memorial Buildings, Gardens and Areas",Buildings,Malayan Emergency,1950,7,1.4,2026-10-12
+"Memorial Buildings, Gardens and Areas",Buildings,Thai-Malay,1960,0,0.0,2026-10-12
+"Memorial Buildings, Gardens and Areas",Buildings,Vietnam War,1962,15,3.0,2026-10-12
+"Memorial Buildings, Gardens and Areas",Buildings,Indonesian Confrontation,1963,4,0.8,2026-10-12
+"Memorial Buildings, Gardens and Areas",Buildings,First Gulf War,1990,3,0.6,2026-10-12
+"Memorial Buildings, Gardens and Areas",Buildings,East Timor,1999,3,0.6,2026-10-12
+"Memorial Buildings, Gardens and Areas",Buildings,Afghanistan,2001,5,1.0,2026-10-12
+"Memorial Buildings, Gardens and Areas",Buildings,Second Gulf War (Iraq),2003,4,0.8,2026-10-12
+"Memorial Buildings, Gardens and Areas",Buildings,National Service,,2,0.4,2026-10-12
+"Memorial Buildings, Gardens and Areas",Buildings,All conflicts (general),,50,10.0,2026-10-12
+"Memorial Buildings, Gardens and Areas",Buildings,Other,,322,64.4,2026-10-12
+Hall,Buildings,Sudan,1885,2,0.5,2026-10-12
+Hall,Buildings,Boer War,1899,5,1.1,2026-10-12
+Hall,Buildings,Boxer Rebellion,1900,0,0.0,2026-10-12
+Hall,Buildings,First World War,1914,202,45.8,2026-10-12
+Hall,Buildings,Second World War,1939,129,29.3,2026-10-12
+Hall,Buildings,Peacekeeping,1947,7,1.6,2026-10-12
+Hall,Buildings,Korean War,1950,22,5.0,2026-10-12
+Hall,Buildings,Malayan Emergency,1950,11,2.5,2026-10-12
+Hall,Buildings,Thai-Malay,1960,1,0.2,2026-10-12
+Hall,Buildings,Vietnam War,1962,25,5.7,2026-10-12
+Hall,Buildings,Indonesian Confrontation,1963,6,1.4,2026-10-12
+Hall,Buildings,First Gulf War,1990,7,1.6,2026-10-12
+Hall,Buildings,East Timor,1999,4,0.9,2026-10-12
+Hall,Buildings,Afghanistan,2001,5,1.1,2026-10-12
+Hall,Buildings,Second Gulf War (Iraq),2003,6,1.4,2026-10-12
+Hall,Buildings,National Service,,2,0.5,2026-10-12
+Hall,Buildings,All conflicts (general),,134,30.4,2026-10-12
+Hall,Buildings,Other,,4,0.9,2026-10-12
+Swimming Pool,Buildings,Sudan,1885,0,0.0,2026-10-12
+Swimming Pool,Buildings,Boer War,1899,0,0.0,2026-10-12
+Swimming Pool,Buildings,Boxer Rebellion,1900,0,0.0,2026-10-12
+Swimming Pool,Buildings,First World War,1914,11,18.6,2026-10-12
+Swimming Pool,Buildings,Second World War,1939,20,33.9,2026-10-12
+Swimming Pool,Buildings,Peacekeeping,1947,1,1.7,2026-10-12
+Swimming Pool,Buildings,Korean War,1950,2,3.4,2026-10-12
+Swimming Pool,Buildings,Malayan Emergency,1950,0,0.0,2026-10-12
+Swimming Pool,Buildings,Thai-Malay,1960,0,0.0,2026-10-12
+Swimming Pool,Buildings,Vietnam War,1962,1,1.7,2026-10-12
+Swimming Pool,Buildings,Indonesian Confrontation,1963,0,0.0,2026-10-12
+Swimming Pool,Buildings,First Gulf War,1990,0,0.0,2026-10-12
+Swimming Pool,Buildings,East Timor,1999,0,0.0,2026-10-12
+Swimming Pool,Buildings,Afghanistan,2001,0,0.0,2026-10-12
+Swimming Pool,Buildings,Second Gulf War (Iraq),2003,0,0.0,2026-10-12
+Swimming Pool,Buildings,National Service,,0,0.0,2026-10-12
+Swimming Pool,Buildings,All conflicts (general),,36,61.0,2026-10-12
+Swimming Pool,Buildings,Other,,0,0.0,2026-10-12
+Museum,Buildings,Sudan,1885,0,0.0,2026-10-12
+Museum,Buildings,Boer War,1899,0,0.0,2026-10-12
+Museum,Buildings,Boxer Rebellion,1900,0,0.0,2026-10-12
+Museum,Buildings,First World War,1914,9,32.1,2026-10-12
+Museum,Buildings,Second World War,1939,6,21.4,2026-10-12
+Museum,Buildings,Peacekeeping,1947,1,3.6,2026-10-12
+Museum,Buildings,Korean War,1950,2,7.1,2026-10-12
+Museum,Buildings,Malayan Emergency,1950,1,3.6,2026-10-12
+Museum,Buildings,Thai-Malay,1960,0,0.0,2026-10-12
+Museum,Buildings,Vietnam War,1962,1,3.6,2026-10-12
+Museum,Buildings,Indonesian Confrontation,1963,1,3.6,2026-10-12
+Museum,Buildings,First Gulf War,1990,1,3.6,2026-10-12
+Museum,Buildings,East Timor,1999,1,3.6,2026-10-12
+Museum,Buildings,Afghanistan,2001,1,3.6,2026-10-12
+Museum,Buildings,Second Gulf War (Iraq),2003,1,3.6,2026-10-12
+Museum,Buildings,National Service,,1,3.6,2026-10-12
+Museum,Buildings,All conflicts (general),,16,57.1,2026-10-12
+Museum,Buildings,Other,,1,3.6,2026-10-12
+Hospital,Buildings,Sudan,1885,0,0.0,2026-10-12
+Hospital,Buildings,Boer War,1899,0,0.0,2026-10-12
+Hospital,Buildings,Boxer Rebellion,1900,0,0.0,2026-10-12
+Hospital,Buildings,First World War,1914,10,43.5,2026-10-12
+Hospital,Buildings,Second World War,1939,6,26.1,2026-10-12
+Hospital,Buildings,Peacekeeping,1947,0,0.0,2026-10-12
+Hospital,Buildings,Korean War,1950,0,0.0,2026-10-12
+Hospital,Buildings,Malayan Emergency,1950,0,0.0,2026-10-12
+Hospital,Buildings,Thai-Malay,1960,0,0.0,2026-10-12
+Hospital,Buildings,Vietnam War,1962,0,0.0,2026-10-12
+Hospital,Buildings,Indonesian Confrontation,1963,0,0.0,2026-10-12
+Hospital,Buildings,First Gulf War,1990,0,0.0,2026-10-12
+Hospital,Buildings,East Timor,1999,0,0.0,2026-10-12
+Hospital,Buildings,Afghanistan,2001,0,0.0,2026-10-12
+Hospital,Buildings,Second Gulf War (Iraq),2003,0,0.0,2026-10-12
+Hospital,Buildings,National Service,,0,0.0,2026-10-12
+Hospital,Buildings,All conflicts (general),,8,34.8,2026-10-12
+Hospital,Buildings,Other,,1,4.3,2026-10-12
+Church,Buildings,Sudan,1885,0,0.0,2026-10-12
+Church,Buildings,Boer War,1899,0,0.0,2026-10-12
+Church,Buildings,Boxer Rebellion,1900,0,0.0,2026-10-12
+Church,Buildings,First World War,1914,3,23.1,2026-10-12
+Church,Buildings,Second World War,1939,7,53.8,2026-10-12
+Church,Buildings,Peacekeeping,1947,0,0.0,2026-10-12
+Church,Buildings,Korean War,1950,0,0.0,2026-10-12
+Church,Buildings,Malayan Emergency,1950,0,0.0,2026-10-12
+Church,Buildings,Thai-Malay,1960,0,0.0,2026-10-12
+Church,Buildings,Vietnam War,1962,0,0.0,2026-10-12
+Church,Buildings,Indonesian Confrontation,1963,0,0.0,2026-10-12
+Church,Buildings,First Gulf War,1990,0,0.0,2026-10-12
+Church,Buildings,East Timor,1999,0,0.0,2026-10-12
+Church,Buildings,Afghanistan,2001,0,0.0,2026-10-12
+Church,Buildings,Second Gulf War (Iraq),2003,0,0.0,2026-10-12
+Church,Buildings,National Service,,0,0.0,2026-10-12
+Church,Buildings,All conflicts (general),,4,30.8,2026-10-12
+Church,Buildings,Other,,0,0.0,2026-10-12
+School,Buildings,Sudan,1885,0,0.0,2026-10-12
+School,Buildings,Boer War,1899,0,0.0,2026-10-12
+School,Buildings,Boxer Rebellion,1900,0,0.0,2026-10-12
+School,Buildings,First World War,1914,5,62.5,2026-10-12
+School,Buildings,Second World War,1939,5,62.5,2026-10-12
+School,Buildings,Peacekeeping,1947,1,12.5,2026-10-12
+School,Buildings,Korean War,1950,3,37.5,2026-10-12
+School,Buildings,Malayan Emergency,1950,1,12.5,2026-10-12
+School,Buildings,Thai-Malay,1960,0,0.0,2026-10-12
+School,Buildings,Vietnam War,1962,2,25.0,2026-10-12
+School,Buildings,Indonesian Confrontation,1963,0,0.0,2026-10-12
+School,Buildings,First Gulf War,1990,1,12.5,2026-10-12
+School,Buildings,East Timor,1999,1,12.5,2026-10-12
+School,Buildings,Afghanistan,2001,1,12.5,2026-10-12
+School,Buildings,Second Gulf War (Iraq),2003,1,12.5,2026-10-12
+School,Buildings,National Service,,1,12.5,2026-10-12
+School,Buildings,All conflicts (general),,2,25.0,2026-10-12
+School,Buildings,Other,,0,0.0,2026-10-12
+Monuments,Monuments,Sudan,1885,1,0.1,2026-10-12
+Monuments,Monuments,Boer War,1899,20,2.9,2026-10-12
+Monuments,Monuments,Boxer Rebellion,1900,1,0.1,2026-10-12
+Monuments,Monuments,First World War,1914,161,23.4,2026-10-12
+Monuments,Monuments,Second World War,1939,124,18.0,2026-10-12
+Monuments,Monuments,Peacekeeping,1947,15,2.2,2026-10-12
+Monuments,Monuments,Korean War,1950,31,4.5,2026-10-12
+Monuments,Monuments,Malayan Emergency,1950,22,3.2,2026-10-12
+Monuments,Monuments,Thai-Malay,1960,0,0.0,2026-10-12
+Monuments,Monuments,Vietnam War,1962,50,7.3,2026-10-12
+Monuments,Monuments,Indonesian Confrontation,1963,14,2.0,2026-10-12
+Monuments,Monuments,First Gulf War,1990,10,1.5,2026-10-12
+Monuments,Monuments,East Timor,1999,5,0.7,2026-10-12
+Monuments,Monuments,Afghanistan,2001,14,2.0,2026-10-12
+Monuments,Monuments,Second Gulf War (Iraq),2003,9,1.3,2026-10-12
+Monuments,Monuments,National Service,,9,1.3,2026-10-12
+Monuments,Monuments,All conflicts (general),,71,10.3,2026-10-12
+Monuments,Monuments,Other,,367,53.3,2026-10-12
+Obelisk,Monuments,Sudan,1885,1,0.2,2026-10-12
+Obelisk,Monuments,Boer War,1899,68,14.7,2026-10-12
+Obelisk,Monuments,Boxer Rebellion,1900,3,0.6,2026-10-12
+Obelisk,Monuments,First World War,1914,330,71.4,2026-10-12
+Obelisk,Monuments,Second World War,1939,271,58.7,2026-10-12
+Obelisk,Monuments,Peacekeeping,1947,37,8.0,2026-10-12
+Obelisk,Monuments,Korean War,1950,116,25.1,2026-10-12
+Obelisk,Monuments,Malayan Emergency,1950,69,14.9,2026-10-12
+Obelisk,Monuments,Thai-Malay,1960,1,0.2,2026-10-12
+Obelisk,Monuments,Vietnam War,1962,133,28.8,2026-10-12
+Obelisk,Monuments,Indonesian Confrontation,1963,37,8.0,2026-10-12
+Obelisk,Monuments,First Gulf War,1990,17,3.7,2026-10-12
+Obelisk,Monuments,East Timor,1999,13,2.8,2026-10-12
+Obelisk,Monuments,Afghanistan,2001,24,5.2,2026-10-12
+Obelisk,Monuments,Second Gulf War (Iraq),2003,19,4.1,2026-10-12
+Obelisk,Monuments,National Service,,7,1.5,2026-10-12
+Obelisk,Monuments,All conflicts (general),,70,15.2,2026-10-12
+Obelisk,Monuments,Other,,12,2.6,2026-10-12
+Stone,Monuments,Sudan,1885,2,0.5,2026-10-12
+Stone,Monuments,Boer War,1899,16,4.2,2026-10-12
+Stone,Monuments,Boxer Rebellion,1900,2,0.5,2026-10-12
+Stone,Monuments,First World War,1914,114,29.9,2026-10-12
+Stone,Monuments,Second World War,1939,133,34.9,2026-10-12
+Stone,Monuments,Peacekeeping,1947,12,3.1,2026-10-12
+Stone,Monuments,Korean War,1950,46,12.1,2026-10-12
+Stone,Monuments,Malayan Emergency,1950,25,6.6,2026-10-12
+Stone,Monuments,Thai-Malay,1960,0,0.0,2026-10-12
+Stone,Monuments,Vietnam War,1962,52,13.6,2026-10-12
+Stone,Monuments,Indonesian Confrontation,1963,14,3.7,2026-10-12
+Stone,Monuments,First Gulf War,1990,10,2.6,2026-10-12
+Stone,Monuments,East Timor,1999,7,1.8,2026-10-12
+Stone,Monuments,Afghanistan,2001,7,1.8,2026-10-12
+Stone,Monuments,Second Gulf War (Iraq),2003,8,2.1,2026-10-12
+Stone,Monuments,National Service,,13,3.4,2026-10-12
+Stone,Monuments,All conflicts (general),,107,28.1,2026-10-12
+Stone,Monuments,Other,,17,4.5,2026-10-12
+Cenotaph,Monuments,Sudan,1885,4,1.4,2026-10-12
+Cenotaph,Monuments,Boer War,1899,23,8.0,2026-10-12
+Cenotaph,Monuments,Boxer Rebellion,1900,7,2.4,2026-10-12
+Cenotaph,Monuments,First World War,1914,148,51.4,2026-10-12
+Cenotaph,Monuments,Second World War,1939,111,38.5,2026-10-12
+Cenotaph,Monuments,Peacekeeping,1947,19,6.6,2026-10-12
+Cenotaph,Monuments,Korean War,1950,59,20.5,2026-10-12
+Cenotaph,Monuments,Malayan Emergency,1950,39,13.5,2026-10-12
+Cenotaph,Monuments,Thai-Malay,1960,0,0.0,2026-10-12
+Cenotaph,Monuments,Vietnam War,1962,68,23.6,2026-10-12
+Cenotaph,Monuments,Indonesian Confrontation,1963,27,9.4,2026-10-12
+Cenotaph,Monuments,First Gulf War,1990,16,5.6,2026-10-12
+Cenotaph,Monuments,East Timor,1999,10,3.5,2026-10-12
+Cenotaph,Monuments,Afghanistan,2001,18,6.2,2026-10-12
+Cenotaph,Monuments,Second Gulf War (Iraq),2003,17,5.9,2026-10-12
+Cenotaph,Monuments,National Service,,3,1.0,2026-10-12
+Cenotaph,Monuments,All conflicts (general),,113,39.2,2026-10-12
+Cenotaph,Monuments,Other,,7,2.4,2026-10-12
+Gate,Monuments,Sudan,1885,0,0.0,2026-10-12
+Gate,Monuments,Boer War,1899,4,2.2,2026-10-12
+Gate,Monuments,Boxer Rebellion,1900,0,0.0,2026-10-12
+Gate,Monuments,First World War,1914,89,48.1,2026-10-12
+Gate,Monuments,Second World War,1939,98,53.0,2026-10-12
+Gate,Monuments,Peacekeeping,1947,2,1.1,2026-10-12
+Gate,Monuments,Korean War,1950,16,8.6,2026-10-12
+Gate,Monuments,Malayan Emergency,1950,13,7.0,2026-10-12
+Gate,Monuments,Thai-Malay,1960,0,0.0,2026-10-12
+Gate,Monuments,Vietnam War,1962,22,11.9,2026-10-12
+Gate,Monuments,Indonesian Confrontation,1963,8,4.3,2026-10-12
+Gate,Monuments,First Gulf War,1990,4,2.2,2026-10-12
+Gate,Monuments,East Timor,1999,2,1.1,2026-10-12
+Gate,Monuments,Afghanistan,2001,6,3.2,2026-10-12
+Gate,Monuments,Second Gulf War (Iraq),2003,5,2.7,2026-10-12
+Gate,Monuments,National Service,,1,0.5,2026-10-12
+Gate,Monuments,All conflicts (general),,19,10.3,2026-10-12
+Gate,Monuments,Other,,4,2.2,2026-10-12
+Column,Monuments,Sudan,1885,1,0.6,2026-10-12
+Column,Monuments,Boer War,1899,20,11.3,2026-10-12
+Column,Monuments,Boxer Rebellion,1900,1,0.6,2026-10-12
+Column,Monuments,First World War,1914,113,63.8,2026-10-12
+Column,Monuments,Second World War,1939,93,52.5,2026-10-12
+Column,Monuments,Peacekeeping,1947,7,4.0,2026-10-12
+Column,Monuments,Korean War,1950,27,15.3,2026-10-12
+Column,Monuments,Malayan Emergency,1950,18,10.2,2026-10-12
+Column,Monuments,Thai-Malay,1960,1,0.6,2026-10-12
+Column,Monuments,Vietnam War,1962,38,21.5,2026-10-12
+Column,Monuments,Indonesian Confrontation,1963,9,5.1,2026-10-12
+Column,Monuments,First Gulf War,1990,4,2.3,2026-10-12
+Column,Monuments,East Timor,1999,1,0.6,2026-10-12
+Column,Monuments,Afghanistan,2001,6,3.4,2026-10-12
+Column,Monuments,Second Gulf War (Iraq),2003,4,2.3,2026-10-12
+Column,Monuments,National Service,,3,1.7,2026-10-12
+Column,Monuments,All conflicts (general),,26,14.7,2026-10-12
+Column,Monuments,Other,,6,3.4,2026-10-12
+Digger,Monuments,Sudan,1885,0,0.0,2026-10-12
+Digger,Monuments,Boer War,1899,12,7.2,2026-10-12
+Digger,Monuments,Boxer Rebellion,1900,0,0.0,2026-10-12
+Digger,Monuments,First World War,1914,105,63.3,2026-10-12
+Digger,Monuments,Second World War,1939,66,39.8,2026-10-12
+Digger,Monuments,Peacekeeping,1947,6,3.6,2026-10-12
+Digger,Monuments,Korean War,1950,23,13.9,2026-10-12
+Digger,Monuments,Malayan Emergency,1950,14,8.4,2026-10-12
+Digger,Monuments,Thai-Malay,1960,0,0.0,2026-10-12
+Digger,Monuments,Vietnam War,1962,29,17.5,2026-10-12
+Digger,Monuments,Indonesian Confrontation,1963,10,6.0,2026-10-12
+Digger,Monuments,First Gulf War,1990,5,3.0,2026-10-12
+Digger,Monuments,East Timor,1999,4,2.4,2026-10-12
+Digger,Monuments,Afghanistan,2001,5,3.0,2026-10-12
+Digger,Monuments,Second Gulf War (Iraq),2003,2,1.2,2026-10-12
+Digger,Monuments,National Service,,2,1.2,2026-10-12
+Digger,Monuments,All conflicts (general),,23,13.9,2026-10-12
+Digger,Monuments,Other,,2,1.2,2026-10-12
+Cairn,Monuments,Sudan,1885,1,0.8,2026-10-12
+Cairn,Monuments,Boer War,1899,5,4.0,2026-10-12
+Cairn,Monuments,Boxer Rebellion,1900,0,0.0,2026-10-12
+Cairn,Monuments,First World War,1914,38,30.2,2026-10-12
+Cairn,Monuments,Second World War,1939,64,50.8,2026-10-12
+Cairn,Monuments,Peacekeeping,1947,6,4.8,2026-10-12
+Cairn,Monuments,Korean War,1950,20,15.9,2026-10-12
+Cairn,Monuments,Malayan Emergency,1950,13,10.3,2026-10-12
+Cairn,Monuments,Thai-Malay,1960,0,0.0,2026-10-12
+Cairn,Monuments,Vietnam War,1962,28,22.2,2026-10-12
+Cairn,Monuments,Indonesian Confrontation,1963,11,8.7,2026-10-12
+Cairn,Monuments,First Gulf War,1990,4,3.2,2026-10-12
+Cairn,Monuments,East Timor,1999,3,2.4,2026-10-12
+Cairn,Monuments,Afghanistan,2001,2,1.6,2026-10-12
+Cairn,Monuments,Second Gulf War (Iraq),2003,2,1.6,2026-10-12
+Cairn,Monuments,National Service,,7,5.6,2026-10-12
+Cairn,Monuments,All conflicts (general),,33,26.2,2026-10-12
+Cairn,Monuments,Other,,5,4.0,2026-10-12
+Statue,Monuments,Sudan,1885,0,0.0,2026-10-12
+Statue,Monuments,Boer War,1899,8,7.2,2026-10-12
+Statue,Monuments,Boxer Rebellion,1900,0,0.0,2026-10-12
+Statue,Monuments,First World War,1914,59,53.2,2026-10-12
+Statue,Monuments,Second World War,1939,29,26.1,2026-10-12
+Statue,Monuments,Peacekeeping,1947,3,2.7,2026-10-12
+Statue,Monuments,Korean War,1950,7,6.3,2026-10-12
+Statue,Monuments,Malayan Emergency,1950,4,3.6,2026-10-12
+Statue,Monuments,Thai-Malay,1960,0,0.0,2026-10-12
+Statue,Monuments,Vietnam War,1962,6,5.4,2026-10-12
+Statue,Monuments,Indonesian Confrontation,1963,4,3.6,2026-10-12
+Statue,Monuments,First Gulf War,1990,2,1.8,2026-10-12
+Statue,Monuments,East Timor,1999,2,1.8,2026-10-12
+Statue,Monuments,Afghanistan,2001,2,1.8,2026-10-12
+Statue,Monuments,Second Gulf War (Iraq),2003,3,2.7,2026-10-12
+Statue,Monuments,National Service,,2,1.8,2026-10-12
+Statue,Monuments,All conflicts (general),,16,14.4,2026-10-12
+Statue,Monuments,Other,,2,1.8,2026-10-12
+Sculpture,Monuments,Sudan,1885,0,0.0,2026-10-12
+Sculpture,Monuments,Boer War,1899,8,9.2,2026-10-12
+Sculpture,Monuments,Boxer Rebellion,1900,0,0.0,2026-10-12
+Sculpture,Monuments,First World War,1914,33,37.9,2026-10-12
+Sculpture,Monuments,Second World War,1939,31,35.6,2026-10-12
+Sculpture,Monuments,Peacekeeping,1947,1,1.1,2026-10-12
+Sculpture,Monuments,Korean War,1950,7,8.0,2026-10-12
+Sculpture,Monuments,Malayan Emergency,1950,5,5.7,2026-10-12
+Sculpture,Monuments,Thai-Malay,1960,0,0.0,2026-10-12
+Sculpture,Monuments,Vietnam War,1962,11,12.6,2026-10-12
+Sculpture,Monuments,Indonesian Confrontation,1963,2,2.3,2026-10-12
+Sculpture,Monuments,First Gulf War,1990,3,3.4,2026-10-12
+Sculpture,Monuments,East Timor,1999,1,1.1,2026-10-12
+Sculpture,Monuments,Afghanistan,2001,3,3.4,2026-10-12
+Sculpture,Monuments,Second Gulf War (Iraq),2003,3,3.4,2026-10-12
+Sculpture,Monuments,National Service,,1,1.1,2026-10-12
+Sculpture,Monuments,All conflicts (general),,23,26.4,2026-10-12
+Sculpture,Monuments,Other,,2,2.3,2026-10-12
+Cross,Monuments,Sudan,1885,0,0.0,2026-10-12
+Cross,Monuments,Boer War,1899,3,4.6,2026-10-12
+Cross,Monuments,Boxer Rebellion,1900,0,0.0,2026-10-12
+Cross,Monuments,First World War,1914,34,52.3,2026-10-12
+Cross,Monuments,Second World War,1939,16,24.6,2026-10-12
+Cross,Monuments,Peacekeeping,1947,2,3.1,2026-10-12
+Cross,Monuments,Korean War,1950,7,10.8,2026-10-12
+Cross,Monuments,Malayan Emergency,1950,5,7.7,2026-10-12
+Cross,Monuments,Thai-Malay,1960,0,0.0,2026-10-12
+Cross,Monuments,Vietnam War,1962,20,30.8,2026-10-12
+Cross,Monuments,Indonesian Confrontation,1963,4,6.2,2026-10-12
+Cross,Monuments,First Gulf War,1990,3,4.6,2026-10-12
+Cross,Monuments,East Timor,1999,0,0.0,2026-10-12
+Cross,Monuments,Afghanistan,2001,2,3.1,2026-10-12
+Cross,Monuments,Second Gulf War (Iraq),2003,2,3.1,2026-10-12
+Cross,Monuments,National Service,,1,1.5,2026-10-12
+Cross,Monuments,All conflicts (general),,11,16.9,2026-10-12
+Cross,Monuments,Other,,1,1.5,2026-10-12
+Arch,Monuments,Sudan,1885,1,2.7,2026-10-12
+Arch,Monuments,Boer War,1899,2,5.4,2026-10-12
+Arch,Monuments,Boxer Rebellion,1900,0,0.0,2026-10-12
+Arch,Monuments,First World War,1914,27,73.0,2026-10-12
+Arch,Monuments,Second World War,1939,16,43.2,2026-10-12
+Arch,Monuments,Peacekeeping,1947,0,0.0,2026-10-12
+Arch,Monuments,Korean War,1950,7,18.9,2026-10-12
+Arch,Monuments,Malayan Emergency,1950,7,18.9,2026-10-12
+Arch,Monuments,Thai-Malay,1960,0,0.0,2026-10-12
+Arch,Monuments,Vietnam War,1962,9,24.3,2026-10-12
+Arch,Monuments,Indonesian Confrontation,1963,1,2.7,2026-10-12
+Arch,Monuments,First Gulf War,1990,3,8.1,2026-10-12
+Arch,Monuments,East Timor,1999,1,2.7,2026-10-12
+Arch,Monuments,Afghanistan,2001,1,2.7,2026-10-12
+Arch,Monuments,Second Gulf War (Iraq),2003,2,5.4,2026-10-12
+Arch,Monuments,National Service,,0,0.0,2026-10-12
+Arch,Monuments,All conflicts (general),,5,13.5,2026-10-12
+Arch,Monuments,Other,,2,5.4,2026-10-12
+Flagpole,Monuments,Sudan,1885,0,0.0,2026-10-12
+Flagpole,Monuments,Boer War,1899,0,0.0,2026-10-12
+Flagpole,Monuments,Boxer Rebellion,1900,0,0.0,2026-10-12
+Flagpole,Monuments,First World War,1914,13,39.4,2026-10-12
+Flagpole,Monuments,Second World War,1939,10,30.3,2026-10-12
+Flagpole,Monuments,Peacekeeping,1947,1,3.0,2026-10-12
+Flagpole,Monuments,Korean War,1950,1,3.0,2026-10-12
+Flagpole,Monuments,Malayan Emergency,1950,1,3.0,2026-10-12
+Flagpole,Monuments,Thai-Malay,1960,0,0.0,2026-10-12
+Flagpole,Monuments,Vietnam War,1962,3,9.1,2026-10-12
+Flagpole,Monuments,Indonesian Confrontation,1963,0,0.0,2026-10-12
+Flagpole,Monuments,First Gulf War,1990,0,0.0,2026-10-12
+Flagpole,Monuments,East Timor,1999,1,3.0,2026-10-12
+Flagpole,Monuments,Afghanistan,2001,0,0.0,2026-10-12
+Flagpole,Monuments,Second Gulf War (Iraq),2003,0,0.0,2026-10-12
+Flagpole,Monuments,National Service,,0,0.0,2026-10-12
+Flagpole,Monuments,All conflicts (general),,13,39.4,2026-10-12
+Flagpole,Monuments,Other,,1,3.0,2026-10-12
+Clock Tower,Monuments,Sudan,1885,0,0.0,2026-10-12
+Clock Tower,Monuments,Boer War,1899,3,11.5,2026-10-12
+Clock Tower,Monuments,Boxer Rebellion,1900,0,0.0,2026-10-12
+Clock Tower,Monuments,First World War,1914,20,76.9,2026-10-12
+Clock Tower,Monuments,Second World War,1939,14,53.8,2026-10-12
+Clock Tower,Monuments,Peacekeeping,1947,3,11.5,2026-10-12
+Clock Tower,Monuments,Korean War,1950,9,34.6,2026-10-12
+Clock Tower,Monuments,Malayan Emergency,1950,5,19.2,2026-10-12
+Clock Tower,Monuments,Thai-Malay,1960,0,0.0,2026-10-12
+Clock Tower,Monuments,Vietnam War,1962,8,30.8,2026-10-12
+Clock Tower,Monuments,Indonesian Confrontation,1963,4,15.4,2026-10-12
+Clock Tower,Monuments,First Gulf War,1990,3,11.5,2026-10-12
+Clock Tower,Monuments,East Timor,1999,2,7.7,2026-10-12
+Clock Tower,Monuments,Afghanistan,2001,2,7.7,2026-10-12
+Clock Tower,Monuments,Second Gulf War (Iraq),2003,2,7.7,2026-10-12
+Clock Tower,Monuments,National Service,,0,0.0,2026-10-12
+Clock Tower,Monuments,All conflicts (general),,3,11.5,2026-10-12
+Clock Tower,Monuments,Other,,0,0.0,2026-10-12
+Fountain,Monuments,Sudan,1885,0,0.0,2026-10-12
+Fountain,Monuments,Boer War,1899,7,31.8,2026-10-12
+Fountain,Monuments,Boxer Rebellion,1900,0,0.0,2026-10-12
+Fountain,Monuments,First World War,1914,8,36.4,2026-10-12
+Fountain,Monuments,Second World War,1939,5,22.7,2026-10-12
+Fountain,Monuments,Peacekeeping,1947,1,4.5,2026-10-12
+Fountain,Monuments,Korean War,1950,2,9.1,2026-10-12
+Fountain,Monuments,Malayan Emergency,1950,2,9.1,2026-10-12
+Fountain,Monuments,Thai-Malay,1960,0,0.0,2026-10-12
+Fountain,Monuments,Vietnam War,1962,2,9.1,2026-10-12
+Fountain,Monuments,Indonesian Confrontation,1963,2,9.1,2026-10-12
+Fountain,Monuments,First Gulf War,1990,2,9.1,2026-10-12
+Fountain,Monuments,East Timor,1999,0,0.0,2026-10-12
+Fountain,Monuments,Afghanistan,2001,1,4.5,2026-10-12
+Fountain,Monuments,Second Gulf War (Iraq),2003,2,9.1,2026-10-12
+Fountain,Monuments,National Service,,0,0.0,2026-10-12
+Fountain,Monuments,All conflicts (general),,5,22.7,2026-10-12
+Fountain,Monuments,Other,,0,0.0,2026-10-12
+Shrine,Monuments,Sudan,1885,0,0.0,2026-10-12
+Shrine,Monuments,Boer War,1899,0,0.0,2026-10-12
+Shrine,Monuments,Boxer Rebellion,1900,0,0.0,2026-10-12
+Shrine,Monuments,First World War,1914,8,38.1,2026-10-12
+Shrine,Monuments,Second World War,1939,6,28.6,2026-10-12
+Shrine,Monuments,Peacekeeping,1947,0,0.0,2026-10-12
+Shrine,Monuments,Korean War,1950,0,0.0,2026-10-12
+Shrine,Monuments,Malayan Emergency,1950,1,4.8,2026-10-12
+Shrine,Monuments,Thai-Malay,1960,0,0.0,2026-10-12
+Shrine,Monuments,Vietnam War,1962,0,0.0,2026-10-12
+Shrine,Monuments,Indonesian Confrontation,1963,0,0.0,2026-10-12
+Shrine,Monuments,First Gulf War,1990,0,0.0,2026-10-12
+Shrine,Monuments,East Timor,1999,0,0.0,2026-10-12
+Shrine,Monuments,Afghanistan,2001,0,0.0,2026-10-12
+Shrine,Monuments,Second Gulf War (Iraq),2003,0,0.0,2026-10-12
+Shrine,Monuments,National Service,,1,4.8,2026-10-12
+Shrine,Monuments,All conflicts (general),,8,38.1,2026-10-12
+Shrine,Monuments,Other,,0,0.0,2026-10-12
+Trophy,Monuments,Sudan,1885,0,0.0,2026-10-12
+Trophy,Monuments,Boer War,1899,0,0.0,2026-10-12
+Trophy,Monuments,Boxer Rebellion,1900,0,0.0,2026-10-12
+Trophy,Monuments,First World War,1914,9,50.0,2026-10-12
+Trophy,Monuments,Second World War,1939,5,27.8,2026-10-12
+Trophy,Monuments,Peacekeeping,1947,0,0.0,2026-10-12
+Trophy,Monuments,Korean War,1950,0,0.0,2026-10-12
+Trophy,Monuments,Malayan Emergency,1950,0,0.0,2026-10-12
+Trophy,Monuments,Thai-Malay,1960,0,0.0,2026-10-12
+Trophy,Monuments,Vietnam War,1962,1,5.6,2026-10-12
+Trophy,Monuments,Indonesian Confrontation,1963,0,0.0,2026-10-12
+Trophy,Monuments,First Gulf War,1990,0,0.0,2026-10-12
+Trophy,Monuments,East Timor,1999,0,0.0,2026-10-12
+Trophy,Monuments,Afghanistan,2001,0,0.0,2026-10-12
+Trophy,Monuments,Second Gulf War (Iraq),2003,0,0.0,2026-10-12
+Trophy,Monuments,National Service,,0,0.0,2026-10-12
+Trophy,Monuments,All conflicts (general),,2,11.1,2026-10-12
+Trophy,Monuments,Other,,0,0.0,2026-10-12
+Other,Other,Sudan,1885,5,0.3,2026-10-12
+Other,Other,Boer War,1899,30,1.8,2026-10-12
+Other,Other,Boxer Rebellion,1900,4,0.2,2026-10-12
+Other,Other,First World War,1914,276,16.9,2026-10-12
+Other,Other,Second World War,1939,281,17.2,2026-10-12
+Other,Other,Peacekeeping,1947,18,1.1,2026-10-12
+Other,Other,Korean War,1950,35,2.1,2026-10-12
+Other,Other,Malayan Emergency,1950,21,1.3,2026-10-12
+Other,Other,Thai-Malay,1960,1,0.1,2026-10-12
+Other,Other,Vietnam War,1962,59,3.6,2026-10-12
+Other,Other,Indonesian Confrontation,1963,15,0.9,2026-10-12
+Other,Other,First Gulf War,1990,12,0.7,2026-10-12
+Other,Other,East Timor,1999,12,0.7,2026-10-12
+Other,Other,Afghanistan,2001,17,1.0,2026-10-12
+Other,Other,Second Gulf War (Iraq),2003,12,0.7,2026-10-12
+Other,Other,National Service,,9,0.6,2026-10-12
+Other,Other,All conflicts (general),,120,7.3,2026-10-12
+Other,Other,Other,,120,7.3,2026-10-12
+Roll of Honour,Rolls and boards,Sudan,1885,0,0.0,2026-10-12
+Roll of Honour,Rolls and boards,Boer War,1899,10,0.6,2026-10-12
+Roll of Honour,Rolls and boards,Boxer Rebellion,1900,1,0.1,2026-10-12
+Roll of Honour,Rolls and boards,First World War,1914,438,24.8,2026-10-12
+Roll of Honour,Rolls and boards,Second World War,1939,152,8.6,2026-10-12
+Roll of Honour,Rolls and boards,Peacekeeping,1947,1,0.1,2026-10-12
+Roll of Honour,Rolls and boards,Korean War,1950,8,0.5,2026-10-12
+Roll of Honour,Rolls and boards,Malayan Emergency,1950,2,0.1,2026-10-12
+Roll of Honour,Rolls and boards,Thai-Malay,1960,0,0.0,2026-10-12
+Roll of Honour,Rolls and boards,Vietnam War,1962,26,1.5,2026-10-12
+Roll of Honour,Rolls and boards,Indonesian Confrontation,1963,1,0.1,2026-10-12
+Roll of Honour,Rolls and boards,First Gulf War,1990,0,0.0,2026-10-12
+Roll of Honour,Rolls and boards,East Timor,1999,0,0.0,2026-10-12
+Roll of Honour,Rolls and boards,Afghanistan,2001,3,0.2,2026-10-12
+Roll of Honour,Rolls and boards,Second Gulf War (Iraq),2003,0,0.0,2026-10-12
+Roll of Honour,Rolls and boards,National Service,,1,0.1,2026-10-12
+Roll of Honour,Rolls and boards,All conflicts (general),,11,0.6,2026-10-12
+Roll of Honour,Rolls and boards,Other,,3,0.2,2026-10-12
+Plaque,Rolls and boards,Sudan,1885,3,0.3,2026-10-12
+Plaque,Rolls and boards,Boer War,1899,32,2.7,2026-10-12
+Plaque,Rolls and boards,Boxer Rebellion,1900,0,0.0,2026-10-12
+Plaque,Rolls and boards,First World War,1914,235,19.8,2026-10-12
+Plaque,Rolls and boards,Second World War,1939,623,52.4,2026-10-12
+Plaque,Rolls and boards,Peacekeeping,1947,20,1.7,2026-10-12
+Plaque,Rolls and boards,Korean War,1950,48,4.0,2026-10-12
+Plaque,Rolls and boards,Malayan Emergency,1950,31,2.6,2026-10-12
+Plaque,Rolls and boards,Thai-Malay,1960,3,0.3,2026-10-12
+Plaque,Rolls and boards,Vietnam War,1962,95,8.0,2026-10-12
+Plaque,Rolls and boards,Indonesian Confrontation,1963,27,2.3,2026-10-12
+Plaque,Rolls and boards,First Gulf War,1990,10,0.8,2026-10-12
+Plaque,Rolls and boards,East Timor,1999,17,1.4,2026-10-12
+Plaque,Rolls and boards,Afghanistan,2001,15,1.3,2026-10-12
+Plaque,Rolls and boards,Second Gulf War (Iraq),2003,18,1.5,2026-10-12
+Plaque,Rolls and boards,National Service,,24,2.0,2026-10-12
+Plaque,Rolls and boards,All conflicts (general),,112,9.4,2026-10-12
+Plaque,Rolls and boards,Other,,122,10.3,2026-10-12
+Honour Roll,Rolls and boards,Sudan,1885,0,0.0,2026-10-12
+Honour Roll,Rolls and boards,Boer War,1899,8,0.9,2026-10-12
+Honour Roll,Rolls and boards,Boxer Rebellion,1900,1,0.1,2026-10-12
+Honour Roll,Rolls and boards,First World War,1914,652,70.9,2026-10-12
+Honour Roll,Rolls and boards,Second World War,1939,279,30.3,2026-10-12
+Honour Roll,Rolls and boards,Peacekeeping,1947,6,0.7,2026-10-12
+Honour Roll,Rolls and boards,Korean War,1950,21,2.3,2026-10-12
+Honour Roll,Rolls and boards,Malayan Emergency,1950,12,1.3,2026-10-12
+Honour Roll,Rolls and boards,Thai-Malay,1960,0,0.0,2026-10-12
+Honour Roll,Rolls and boards,Vietnam War,1962,55,6.0,2026-10-12
+Honour Roll,Rolls and boards,Indonesian Confrontation,1963,6,0.7,2026-10-12
+Honour Roll,Rolls and boards,First Gulf War,1990,6,0.7,2026-10-12
+Honour Roll,Rolls and boards,East Timor,1999,6,0.7,2026-10-12
+Honour Roll,Rolls and boards,Afghanistan,2001,7,0.8,2026-10-12
+Honour Roll,Rolls and boards,Second Gulf War (Iraq),2003,8,0.9,2026-10-12
+Honour Roll,Rolls and boards,National Service,,3,0.3,2026-10-12
+Honour Roll,Rolls and boards,All conflicts (general),,23,2.5,2026-10-12
+Honour Roll,Rolls and boards,Other,,6,0.7,2026-10-12
+Honour board,Rolls and boards,Sudan,1885,1,0.1,2026-10-12
+Honour board,Rolls and boards,Boer War,1899,16,2.1,2026-10-12
+Honour board,Rolls and boards,Boxer Rebellion,1900,1,0.1,2026-10-12
+Honour board,Rolls and boards,First World War,1914,545,73.0,2026-10-12
+Honour board,Rolls and boards,Second World War,1939,175,23.4,2026-10-12
+Honour board,Rolls and boards,Peacekeeping,1947,3,0.4,2026-10-12
+Honour board,Rolls and boards,Korean War,1950,20,2.7,2026-10-12
+Honour board,Rolls and boards,Malayan Emergency,1950,3,0.4,2026-10-12
+Honour board,Rolls and boards,Thai-Malay,1960,0,0.0,2026-10-12
+Honour board,Rolls and boards,Vietnam War,1962,38,5.1,2026-10-12
+Honour board,Rolls and boards,Indonesian Confrontation,1963,1,0.1,2026-10-12
+Honour board,Rolls and boards,First Gulf War,1990,5,0.7,2026-10-12
+Honour board,Rolls and boards,East Timor,1999,3,0.4,2026-10-12
+Honour board,Rolls and boards,Afghanistan,2001,4,0.5,2026-10-12
+Honour board,Rolls and boards,Second Gulf War (Iraq),2003,2,0.3,2026-10-12
+Honour board,Rolls and boards,National Service,,4,0.5,2026-10-12
+Honour board,Rolls and boards,All conflicts (general),,15,2.0,2026-10-12
+Honour board,Rolls and boards,Other,,5,0.7,2026-10-12
+Boards,Rolls and boards,Sudan,1885,0,0.0,2026-10-12
+Boards,Rolls and boards,Boer War,1899,6,0.9,2026-10-12
+Boards,Rolls and boards,Boxer Rebellion,1900,0,0.0,2026-10-12
+Boards,Rolls and boards,First World War,1914,198,29.2,2026-10-12
+Boards,Rolls and boards,Second World War,1939,126,18.6,2026-10-12
+Boards,Rolls and boards,Peacekeeping,1947,0,0.0,2026-10-12
+Boards,Rolls and boards,Korean War,1950,10,1.5,2026-10-12
+Boards,Rolls and boards,Malayan Emergency,1950,2,0.3,2026-10-12
+Boards,Rolls and boards,Thai-Malay,1960,0,0.0,2026-10-12
+Boards,Rolls and boards,Vietnam War,1962,16,2.4,2026-10-12
+Boards,Rolls and boards,Indonesian Confrontation,1963,1,0.1,2026-10-12
+Boards,Rolls and boards,First Gulf War,1990,1,0.1,2026-10-12
+Boards,Rolls and boards,East Timor,1999,1,0.1,2026-10-12
+Boards,Rolls and boards,Afghanistan,2001,3,0.4,2026-10-12
+Boards,Rolls and boards,Second Gulf War (Iraq),2003,1,0.1,2026-10-12
+Boards,Rolls and boards,National Service,,0,0.0,2026-10-12
+Boards,Rolls and boards,All conflicts (general),,3,0.4,2026-10-12
+Boards,Rolls and boards,Other,,371,54.8,2026-10-12
+Stained glass window,Rolls and boards,Sudan,1885,0,0.0,2026-10-12
+Stained glass window,Rolls and boards,Boer War,1899,3,1.0,2026-10-12
+Stained glass window,Rolls and boards,Boxer Rebellion,1900,0,0.0,2026-10-12
+Stained glass window,Rolls and boards,First World War,1914,39,12.9,2026-10-12
+Stained glass window,Rolls and boards,Second World War,1939,26,8.6,2026-10-12
+Stained glass window,Rolls and boards,Peacekeeping,1947,0,0.0,2026-10-12
+Stained glass window,Rolls and boards,Korean War,1950,0,0.0,2026-10-12
+Stained glass window,Rolls and boards,Malayan Emergency,1950,0,0.0,2026-10-12
+Stained glass window,Rolls and boards,Thai-Malay,1960,0,0.0,2026-10-12
+Stained glass window,Rolls and boards,Vietnam War,1962,0,0.0,2026-10-12
+Stained glass window,Rolls and boards,Indonesian Confrontation,1963,0,0.0,2026-10-12
+Stained glass window,Rolls and boards,First Gulf War,1990,0,0.0,2026-10-12
+Stained glass window,Rolls and boards,East Timor,1999,0,0.0,2026-10-12
+Stained glass window,Rolls and boards,Afghanistan,2001,0,0.0,2026-10-12
+Stained glass window,Rolls and boards,Second Gulf War (Iraq),2003,0,0.0,2026-10-12
+Stained glass window,Rolls and boards,National Service,,0,0.0,2026-10-12
+Stained glass window,Rolls and boards,All conflicts (general),,2,0.7,2026-10-12
+Stained glass window,Rolls and boards,Other,,0,0.0,2026-10-12
+Wall,Rolls and boards,Sudan,1885,2,0.8,2026-10-12
+Wall,Rolls and boards,Boer War,1899,18,7.1,2026-10-12
+Wall,Rolls and boards,Boxer Rebellion,1900,2,0.8,2026-10-12
+Wall,Rolls and boards,First World War,1914,96,38.1,2026-10-12
+Wall,Rolls and boards,Second World War,1939,108,42.9,2026-10-12
+Wall,Rolls and boards,Peacekeeping,1947,24,9.5,2026-10-12
+Wall,Rolls and boards,Korean War,1950,61,24.2,2026-10-12
+Wall,Rolls and boards,Malayan Emergency,1950,39,15.5,2026-10-12
+Wall,Rolls and boards,Thai-Malay,1960,1,0.4,2026-10-12
+Wall,Rolls and boards,Vietnam War,1962,66,26.2,2026-10-12
+Wall,Rolls and boards,Indonesian Confrontation,1963,29,11.5,2026-10-12
+Wall,Rolls and boards,First Gulf War,1990,20,7.9,2026-10-12
+Wall,Rolls and boards,East Timor,1999,18,7.1,2026-10-12
+Wall,Rolls and boards,Afghanistan,2001,21,8.3,2026-10-12
+Wall,Rolls and boards,Second Gulf War (Iraq),2003,18,7.1,2026-10-12
+Wall,Rolls and boards,National Service,,17,6.7,2026-10-12
+Wall,Rolls and boards,All conflicts (general),,95,37.7,2026-10-12
+Wall,Rolls and boards,Other,,9,3.6,2026-10-12
+Park,"Trees, parks and gardens",Sudan,1885,1,0.4,2026-10-12
+Park,"Trees, parks and gardens",Boer War,1899,16,7.2,2026-10-12
+Park,"Trees, parks and gardens",Boxer Rebellion,1900,1,0.4,2026-10-12
+Park,"Trees, parks and gardens",First World War,1914,80,35.9,2026-10-12
+Park,"Trees, parks and gardens",Second World War,1939,89,39.9,2026-10-12
+Park,"Trees, parks and gardens",Peacekeeping,1947,9,4.0,2026-10-12
+Park,"Trees, parks and gardens",Korean War,1950,31,13.9,2026-10-12
+Park,"Trees, parks and gardens",Malayan Emergency,1950,18,8.1,2026-10-12
+Park,"Trees, parks and gardens",Thai-Malay,1960,0,0.0,2026-10-12
+Park,"Trees, parks and gardens",Vietnam War,1962,48,21.5,2026-10-12
+Park,"Trees, parks and gardens",Indonesian Confrontation,1963,12,5.4,2026-10-12
+Park,"Trees, parks and gardens",First Gulf War,1990,4,1.8,2026-10-12
+Park,"Trees, parks and gardens",East Timor,1999,3,1.3,2026-10-12
+Park,"Trees, parks and gardens",Afghanistan,2001,5,2.2,2026-10-12
+Park,"Trees, parks and gardens",Second Gulf War (Iraq),2003,4,1.8,2026-10-12
+Park,"Trees, parks and gardens",National Service,,9,4.0,2026-10-12
+Park,"Trees, parks and gardens",All conflicts (general),,70,31.4,2026-10-12
+Park,"Trees, parks and gardens",Other,,15,6.7,2026-10-12
+Garden,"Trees, parks and gardens",Sudan,1885,0,0.0,2026-10-12
+Garden,"Trees, parks and gardens",Boer War,1899,9,4.9,2026-10-12
+Garden,"Trees, parks and gardens",Boxer Rebellion,1900,2,1.1,2026-10-12
+Garden,"Trees, parks and gardens",First World War,1914,56,30.3,2026-10-12
+Garden,"Trees, parks and gardens",Second World War,1939,73,39.5,2026-10-12
+Garden,"Trees, parks and gardens",Peacekeeping,1947,10,5.4,2026-10-12
+Garden,"Trees, parks and gardens",Korean War,1950,20,10.8,2026-10-12
+Garden,"Trees, parks and gardens",Malayan Emergency,1950,14,7.6,2026-10-12
+Garden,"Trees, parks and gardens",Thai-Malay,1960,0,0.0,2026-10-12
+Garden,"Trees, parks and gardens",Vietnam War,1962,32,17.3,2026-10-12
+Garden,"Trees, parks and gardens",Indonesian Confrontation,1963,12,6.5,2026-10-12
+Garden,"Trees, parks and gardens",First Gulf War,1990,3,1.6,2026-10-12
+Garden,"Trees, parks and gardens",East Timor,1999,1,0.5,2026-10-12
+Garden,"Trees, parks and gardens",Afghanistan,2001,6,3.2,2026-10-12
+Garden,"Trees, parks and gardens",Second Gulf War (Iraq),2003,5,2.7,2026-10-12
+Garden,"Trees, parks and gardens",National Service,,4,2.2,2026-10-12
+Garden,"Trees, parks and gardens",All conflicts (general),,70,37.8,2026-10-12
+Garden,"Trees, parks and gardens",Other,,8,4.3,2026-10-12
+Avenue of Honour,"Trees, parks and gardens",Sudan,1885,0,0.0,2026-10-12
+Avenue of Honour,"Trees, parks and gardens",Boer War,1899,4,2.9,2026-10-12
+Avenue of Honour,"Trees, parks and gardens",Boxer Rebellion,1900,0,0.0,2026-10-12
+Avenue of Honour,"Trees, parks and gardens",First World War,1914,98,71.5,2026-10-12
+Avenue of Honour,"Trees, parks and gardens",Second World War,1939,32,23.4,2026-10-12
+Avenue of Honour,"Trees, parks and gardens",Peacekeeping,1947,3,2.2,2026-10-12
+Avenue of Honour,"Trees, parks and gardens",Korean War,1950,7,5.1,2026-10-12
+Avenue of Honour,"Trees, parks and gardens",Malayan Emergency,1950,3,2.2,2026-10-12
+Avenue of Honour,"Trees, parks and gardens",Thai-Malay,1960,0,0.0,2026-10-12
+Avenue of Honour,"Trees, parks and gardens",Vietnam War,1962,11,8.0,2026-10-12
+Avenue of Honour,"Trees, parks and gardens",Indonesian Confrontation,1963,3,2.2,2026-10-12
+Avenue of Honour,"Trees, parks and gardens",First Gulf War,1990,2,1.5,2026-10-12
+Avenue of Honour,"Trees, parks and gardens",East Timor,1999,1,0.7,2026-10-12
+Avenue of Honour,"Trees, parks and gardens",Afghanistan,2001,4,2.9,2026-10-12
+Avenue of Honour,"Trees, parks and gardens",Second Gulf War (Iraq),2003,2,1.5,2026-10-12
+Avenue of Honour,"Trees, parks and gardens",National Service,,2,1.5,2026-10-12
+Avenue of Honour,"Trees, parks and gardens",All conflicts (general),,17,12.4,2026-10-12
+Avenue of Honour,"Trees, parks and gardens",Other,,1,0.7,2026-10-12
+Lone pine,"Trees, parks and gardens",Sudan,1885,0,0.0,2026-10-12
+Lone pine,"Trees, parks and gardens",Boer War,1899,0,0.0,2026-10-12
+Lone pine,"Trees, parks and gardens",Boxer Rebellion,1900,0,0.0,2026-10-12
+Lone pine,"Trees, parks and gardens",First World War,1914,89,79.5,2026-10-12
+Lone pine,"Trees, parks and gardens",Second World War,1939,3,2.7,2026-10-12
+Lone pine,"Trees, parks and gardens",Peacekeeping,1947,0,0.0,2026-10-12
+Lone pine,"Trees, parks and gardens",Korean War,1950,0,0.0,2026-10-12
+Lone pine,"Trees, parks and gardens",Malayan Emergency,1950,0,0.0,2026-10-12
+Lone pine,"Trees, parks and gardens",Thai-Malay,1960,0,0.0,2026-10-12
+Lone pine,"Trees, parks and gardens",Vietnam War,1962,0,0.0,2026-10-12
+Lone pine,"Trees, parks and gardens",Indonesian Confrontation,1963,1,0.9,2026-10-12
+Lone pine,"Trees, parks and gardens",First Gulf War,1990,0,0.0,2026-10-12
+Lone pine,"Trees, parks and gardens",East Timor,1999,0,0.0,2026-10-12
+Lone pine,"Trees, parks and gardens",Afghanistan,2001,0,0.0,2026-10-12
+Lone pine,"Trees, parks and gardens",Second Gulf War (Iraq),2003,0,0.0,2026-10-12
+Lone pine,"Trees, parks and gardens",National Service,,0,0.0,2026-10-12
+Lone pine,"Trees, parks and gardens",All conflicts (general),,11,9.8,2026-10-12
+Lone pine,"Trees, parks and gardens",Other,,1,0.9,2026-10-12
+Tree,"Trees, parks and gardens",Sudan,1885,0,0.0,2026-10-12
+Tree,"Trees, parks and gardens",Boer War,1899,3,4.1,2026-10-12
+Tree,"Trees, parks and gardens",Boxer Rebellion,1900,0,0.0,2026-10-12
+Tree,"Trees, parks and gardens",First World War,1914,31,41.9,2026-10-12
+Tree,"Trees, parks and gardens",Second World War,1939,30,40.5,2026-10-12
+Tree,"Trees, parks and gardens",Peacekeeping,1947,2,2.7,2026-10-12
+Tree,"Trees, parks and gardens",Korean War,1950,2,2.7,2026-10-12
+Tree,"Trees, parks and gardens",Malayan Emergency,1950,1,1.4,2026-10-12
+Tree,"Trees, parks and gardens",Thai-Malay,1960,0,0.0,2026-10-12
+Tree,"Trees, parks and gardens",Vietnam War,1962,5,6.8,2026-10-12
+Tree,"Trees, parks and gardens",Indonesian Confrontation,1963,0,0.0,2026-10-12
+Tree,"Trees, parks and gardens",First Gulf War,1990,0,0.0,2026-10-12
+Tree,"Trees, parks and gardens",East Timor,1999,1,1.4,2026-10-12
+Tree,"Trees, parks and gardens",Afghanistan,2001,0,0.0,2026-10-12
+Tree,"Trees, parks and gardens",Second Gulf War (Iraq),2003,0,0.0,2026-10-12
+Tree,"Trees, parks and gardens",National Service,,5,6.8,2026-10-12
+Tree,"Trees, parks and gardens",All conflicts (general),,5,6.8,2026-10-12
+Tree,"Trees, parks and gardens",Other,,1,1.4,2026-10-12
+Memorial Trees,"Trees, parks and gardens",Sudan,1885,0,0.0,2026-10-12
+Memorial Trees,"Trees, parks and gardens",Boer War,1899,2,4.9,2026-10-12
+Memorial Trees,"Trees, parks and gardens",Boxer Rebellion,1900,0,0.0,2026-10-12
+Memorial Trees,"Trees, parks and gardens",First World War,1914,22,53.7,2026-10-12
+Memorial Trees,"Trees, parks and gardens",Second World War,1939,13,31.7,2026-10-12
+Memorial Trees,"Trees, parks and gardens",Peacekeeping,1947,1,2.4,2026-10-12
+Memorial Trees,"Trees, parks and gardens",Korean War,1950,1,2.4,2026-10-12
+Memorial Trees,"Trees, parks and gardens",Malayan Emergency,1950,1,2.4,2026-10-12
+Memorial Trees,"Trees, parks and gardens",Thai-Malay,1960,0,0.0,2026-10-12
+Memorial Trees,"Trees, parks and gardens",Vietnam War,1962,2,4.9,2026-10-12
+Memorial Trees,"Trees, parks and gardens",Indonesian Confrontation,1963,1,2.4,2026-10-12
+Memorial Trees,"Trees, parks and gardens",First Gulf War,1990,1,2.4,2026-10-12
+Memorial Trees,"Trees, parks and gardens",East Timor,1999,0,0.0,2026-10-12
+Memorial Trees,"Trees, parks and gardens",Afghanistan,2001,0,0.0,2026-10-12
+Memorial Trees,"Trees, parks and gardens",Second Gulf War (Iraq),2003,1,2.4,2026-10-12
+Memorial Trees,"Trees, parks and gardens",National Service,,0,0.0,2026-10-12
+Memorial Trees,"Trees, parks and gardens",All conflicts (general),,4,9.8,2026-10-12
+Memorial Trees,"Trees, parks and gardens",Other,,1,2.4,2026-10-12
+Bench,"Trees, parks and gardens",Sudan,1885,0,0.0,2026-10-12
+Bench,"Trees, parks and gardens",Boer War,1899,0,0.0,2026-10-12
+Bench,"Trees, parks and gardens",Boxer Rebellion,1900,0,0.0,2026-10-12
+Bench,"Trees, parks and gardens",First World War,1914,9,36.0,2026-10-12
+Bench,"Trees, parks and gardens",Second World War,1939,11,44.0,2026-10-12
+Bench,"Trees, parks and gardens",Peacekeeping,1947,0,0.0,2026-10-12
+Bench,"Trees, parks and gardens",Korean War,1950,0,0.0,2026-10-12
+Bench,"Trees, parks and gardens",Malayan Emergency,1950,0,0.0,2026-10-12
+Bench,"Trees, parks and gardens",Thai-Malay,1960,0,0.0,2026-10-12
+Bench,"Trees, parks and gardens",Vietnam War,1962,0,0.0,2026-10-12
+Bench,"Trees, parks and gardens",Indonesian Confrontation,1963,0,0.0,2026-10-12
+Bench,"Trees, parks and gardens",First Gulf War,1990,0,0.0,2026-10-12
+Bench,"Trees, parks and gardens",East Timor,1999,1,4.0,2026-10-12
+Bench,"Trees, parks and gardens",Afghanistan,2001,0,0.0,2026-10-12
+Bench,"Trees, parks and gardens",Second Gulf War (Iraq),2003,0,0.0,2026-10-12
+Bench,"Trees, parks and gardens",National Service,,0,0.0,2026-10-12
+Bench,"Trees, parks and gardens",All conflicts (general),,3,12.0,2026-10-12
+Bench,"Trees, parks and gardens",Other,,0,0.0,2026-10-12
+Road,"Trees, parks and gardens",Sudan,1885,0,0.0,2026-10-12
+Road,"Trees, parks and gardens",Boer War,1899,0,0.0,2026-10-12
+Road,"Trees, parks and gardens",Boxer Rebellion,1900,0,0.0,2026-10-12
+Road,"Trees, parks and gardens",First World War,1914,5,55.6,2026-10-12
+Road,"Trees, parks and gardens",Second World War,1939,4,44.4,2026-10-12
+Road,"Trees, parks and gardens",Peacekeeping,1947,0,0.0,2026-10-12
+Road,"Trees, parks and gardens",Korean War,1950,0,0.0,2026-10-12
+Road,"Trees, parks and gardens",Malayan Emergency,1950,0,0.0,2026-10-12
+Road,"Trees, parks and gardens",Thai-Malay,1960,0,0.0,2026-10-12
+Road,"Trees, parks and gardens",Vietnam War,1962,0,0.0,2026-10-12
+Road,"Trees, parks and gardens",Indonesian Confrontation,1963,0,0.0,2026-10-12
+Road,"Trees, parks and gardens",First Gulf War,1990,0,0.0,2026-10-12
+Road,"Trees, parks and gardens",East Timor,1999,0,0.0,2026-10-12
+Road,"Trees, parks and gardens",Afghanistan,2001,0,0.0,2026-10-12
+Road,"Trees, parks and gardens",Second Gulf War (Iraq),2003,0,0.0,2026-10-12
+Road,"Trees, parks and gardens",National Service,,0,0.0,2026-10-12
+Road,"Trees, parks and gardens",All conflicts (general),,0,0.0,2026-10-12
+Road,"Trees, parks and gardens",Other,,0,0.0,2026-10-12
+Avenue of Trees,"Trees, parks and gardens",Sudan,1885,0,0.0,2026-10-12
+Avenue of Trees,"Trees, parks and gardens",Boer War,1899,0,0.0,2026-10-12
+Avenue of Trees,"Trees, parks and gardens",Boxer Rebellion,1900,0,0.0,2026-10-12
+Avenue of Trees,"Trees, parks and gardens",First World War,1914,1,100.0,2026-10-12
+Avenue of Trees,"Trees, parks and gardens",Second World War,1939,1,100.0,2026-10-12
+Avenue of Trees,"Trees, parks and gardens",Peacekeeping,1947,0,0.0,2026-10-12
+Avenue of Trees,"Trees, parks and gardens",Korean War,1950,0,0.0,2026-10-12
+Avenue of Trees,"Trees, parks and gardens",Malayan Emergency,1950,0,0.0,2026-10-12
+Avenue of Trees,"Trees, parks and gardens",Thai-Malay,1960,0,0.0,2026-10-12
+Avenue of Trees,"Trees, parks and gardens",Vietnam War,1962,0,0.0,2026-10-12
+Avenue of Trees,"Trees, parks and gardens",Indonesian Confrontation,1963,0,0.0,2026-10-12
+Avenue of Trees,"Trees, parks and gardens",First Gulf War,1990,0,0.0,2026-10-12
+Avenue of Trees,"Trees, parks and gardens",East Timor,1999,0,0.0,2026-10-12
+Avenue of Trees,"Trees, parks and gardens",Afghanistan,2001,0,0.0,2026-10-12
+Avenue of Trees,"Trees, parks and gardens",Second Gulf War (Iraq),2003,0,0.0,2026-10-12
+Avenue of Trees,"Trees, parks and gardens",National Service,,0,0.0,2026-10-12
+Avenue of Trees,"Trees, parks and gardens",All conflicts (general),,0,0.0,2026-10-12
+Avenue of Trees,"Trees, parks and gardens",Other,,0,0.0,2026-10-12

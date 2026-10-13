@@ -1,0 +1,22 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Queensland local government areas (ABS ASGS 2025)",
+  "width": 500,
+  "height": 560,
+  "data": {
+    "url": "data/qld_councils.json",
+    "format": {"type": "topojson", "feature": "qld_lga"}
+  },
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [-14, -25],
+    "rotate": [-146, 0]
+  },
+  "mark": {"type": "geoshape", "fill": "#e8e4d8", "stroke": "#7a7a7a", "strokeWidth": 0.5},
+  "encoding": {
+    "tooltip": [
+      {"field": "properties.LGA_NAME", "type": "nominal", "title": "Council"},
+      {"field": "properties.AREA_SQKM", "type": "quantitative", "title": "Area (km²)", "format": ","}
+    ]
+  }
+}

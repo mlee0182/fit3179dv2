@@ -1,0 +1,340 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Slope graph. For each war, the left end is its share of Australian deaths and the right end is its share of memorial mentions in the national register.",
+  "width": "container",
+  "height": 460,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "padding": {"top": 8, "left": 8, "right": 8, "bottom": 8},
+  "data": {
+    "url": "data/memorials_vs_deaths.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "pct_deaths": "number",
+        "pct_memorials": "number",
+        "deaths": "number",
+        "memorial_mentions": "number"
+      }
+    }
+  },
+  "transform": [
+    {"fold": ["pct_deaths", "pct_memorials"], "as": [ "measure", "percent" ]},
+    {
+      "calculate": "datum.measure == 'pct_deaths' ? 'Share of deaths' : 'Share of memorial mentions'",
+      "as": "measure_label"
+    },
+    {
+      "calculate": "indexof(['First World War', 'Second World War', 'Vietnam War', 'Korean War', 'Malayan Emergency'], datum.conflict) >= 0",
+      "as": "highlight"
+    },
+    {
+      "calculate": "{'First World War': '#975b20', 'Second World War': '#275267', 'Vietnam War': '#3e1875', 'Korean War': '#2788b9', 'Malayan Emergency': '#dba156'}[datum.conflict] || '#b8b2a3'",
+      "as": "line_color"
+    },
+    {
+      "calculate": "datum.percent + ({'Vietnam War': 5.5, 'Korean War': 2.9, 'Malayan Emergency': 0.3}[datum.conflict] || 0)",
+      "as": "label_y"
+    },
+    {
+      "calculate": "datum.conflict + '  ' + format(datum.percent, datum.percent < 1 ? '.2f' : '.1f') + '%'",
+      "as": "end_label"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "measure_label",
+      "type": "ordinal",
+      "sort": [
+        "Share of deaths",
+        "Share of memorial mentions"
+      ],
+      "title": null,
+      "scale": {
+        "padding": 0.0,
+        "paddingOuter": 0,
+        "range": [
+          {"expr": "0.3 * width"},
+          {"expr": "0.62 * width"}
+        ]
+      },
+      "axis": {
+        "orient": "top",
+        "labelAngle": 0,
+        "labelAlign": "center",
+        "labelFontWeight": 700,
+        "labelFontSize": 13,
+        "labelPadding": 12,
+        "domain": false,
+        "ticks": false,
+        "labelLimit": 260
+      }
+    },
+    "y": {
+      "field": "percent",
+      "type": "quantitative",
+      "title": null,
+      "scale": {
+        "domain": [0, 64]
+      },
+      "axis": {
+        "values": [0, 20, 40, 60],
+        "format": ".0f",
+        "labelExpr": "datum.label + '%'",
+        "grid": true,
+        "domain": false,
+        "ticks": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "transform": [
+        {"filter": "!datum.highlight"}
+      ],
+      "mark": {
+        "type": "line",
+        "strokeWidth": 1.2,
+        "opacity": 0.8
+      },
+      "encoding": {
+        "detail": {
+          "field": "conflict",
+          "type": "nominal"
+        },
+        "tooltip": [
+          {
+            "field": "conflict",
+            "type": "nominal",
+            "title": "War"
+          },
+          {
+            "field": "measure_label",
+            "type": "nominal",
+            "title": "Measure"
+          },
+          {
+            "field": "percent",
+            "type": "quantitative",
+            "title": "Per cent",
+            "format": ".2f"
+          }
+        ],
+        "color": {
+          "condition": {"param": "hover", "empty": false, "value": "#2b2a27"},
+          "value": "#b8b2a3"
+        },
+        "strokeWidth": {
+          "condition": {"param": "hover", "empty": false, "value": 3},
+          "value": 1.2
+        }
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.highlight"}
+      ],
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "color": {
+          "field": "line_color",
+          "type": "nominal",
+          "scale": null
+        },
+        "detail": {
+          "field": "conflict",
+          "type": "nominal"
+        },
+        "tooltip": [
+          {
+            "field": "conflict",
+            "type": "nominal",
+            "title": "War"
+          },
+          {
+            "field": "measure_label",
+            "type": "nominal",
+            "title": "Measure"
+          },
+          {
+            "field": "percent",
+            "type": "quantitative",
+            "title": "Per cent",
+            "format": ".2f"
+          }
+        ],
+        "strokeWidth": {
+          "condition": {"param": "hover", "empty": false, "value": 5},
+          "value": 3
+        }
+      }
+    },
+    {
+      "mark": {"type": "circle", "size": 55, "opacity": 1},
+      "encoding": {
+        "color": {
+          "field": "line_color",
+          "type": "nominal",
+          "scale": null
+        },
+        "tooltip": [
+          {
+            "field": "conflict",
+            "type": "nominal",
+            "title": "War"
+          },
+          {
+            "field": "measure_label",
+            "type": "nominal",
+            "title": "Measure"
+          },
+          {
+            "field": "percent",
+            "type": "quantitative",
+            "title": "Per cent",
+            "format": ".2f"
+          },
+          {
+            "field": "deaths",
+            "type": "quantitative",
+            "title": "Australian deaths",
+            "format": ","
+          },
+          {
+            "field": "memorial_mentions",
+            "type": "quantitative",
+            "title": "Memorial mentions",
+            "format": ","
+          }
+        ],
+        "size": {
+          "condition": {"param": "hover", "empty": false, "value": 150},
+          "value": 55
+        }
+      },
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "fields": [
+              "conflict"
+            ],
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
+        }
+      ]
+    },
+    {
+      "transform": [
+        {"filter": "datum.highlight && datum.measure == 'pct_deaths'"}
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -9,
+        "fontSize": 12,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "text": {
+          "field": "end_label",
+          "type": "nominal"
+        },
+        "y": {
+          "field": "label_y",
+          "type": "quantitative"
+        },
+        "color": {"value": "#2b2a27"}
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.highlight && datum.measure == 'pct_memorials'"}
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 9,
+        "fontSize": 12,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "text": {
+          "field": "end_label",
+          "type": "nominal"
+        },
+        "color": {"value": "#2b2a27"}
+      }
+    },
+    {
+      "transform": [
+        {"filter": "!datum.highlight && datum.measure == 'pct_memorials'"},
+        {
+          "filter": {"param": "hover", "empty": false}
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 9,
+        "fontSize": 12,
+        "fontWeight": 600,
+        "color": "#2b2a27"
+      },
+      "encoding": {
+        "text": {
+          "field": "end_label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "measure_label": "Share of deaths",
+            "y": 24,
+            "note": "World wars: remembered less than their cost"
+          },
+          {
+            "measure_label": "Share of deaths",
+            "y": 15,
+            "note": "Smaller wars: remembered more than their cost"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 14,
+        "fontSize": 12,
+        "fontStyle": "italic",
+        "color": "#4a473f"
+      },
+      "encoding": {
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "x": {
+          "field": "measure_label",
+          "type": "ordinal"
+        },
+        "text": {
+          "field": "note",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}
