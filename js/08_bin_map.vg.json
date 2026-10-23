@@ -112,7 +112,7 @@
           "transform": [
             {"filter": "datum.memorials >= 100"},
             {
-              "calculate": "datum.memorials + ' memorials'",
+              "calculate": "'Brisbane area: ' + datum.memorials + ' memorials'",
               "as": "note"
             }
           ],
@@ -120,7 +120,7 @@
             "type": "text",
             "align": "left",
             "dx": 24,
-            "fontSize": 12,
+            "fontSize": 14,
             "fontWeight": 600,
             "color": "#2b2a27"
           },

@@ -1,13 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Heatmap of memorial types against the wars they honour in Queensland. Each column adds up to 100 per cent, so wars of different sizes can be compared.",
+  "description": "Heatmap of memorial types against the wars they honour in Queensland. Each column adds up to 100 per cent, so wars of different sizes can be compared. Types that never reach 5 per cent of any war are grouped as Other types.",
   "width": "container",
-  "height": {"step": 27},
+  "height": {"step": 30},
   "autosize": {
     "type": "fit",
     "contains": "padding"
   },
-  "padding": {"top": 72, "left": 60, "right": 12, "bottom": 4},
+  "padding": {"top": 118, "left": 60, "right": 52, "bottom": 4},
   "data": {"url": "data/qld_memorials.csv"},
   "transform": [
     {
@@ -22,7 +22,7 @@
       "filter": "indexof(['Unit memorials', 'Other', 'Japan (BCOF)', ''], datum.tag) < 0"
     },
     {
-      "calculate": "{'South Africa War': 'Boer War', 'Boxer Rebellion': 'Boxer Rebellion', 'First World War': 'WWI', 'Second World War': 'WWII', 'Indonesian Confrontation': 'Confrontation', 'Vietnam War': 'Vietnam War', 'Korean War': 'Korean War', 'Malayan Emergency': 'Malayan Emergency'}[datum.tag] || datum.tag",
+      "calculate": "datum.tag == 'South Africa War' ? 'Boer War' : datum.tag",
       "as": "war"
     },
     {
@@ -45,16 +45,54 @@
     },
     {"filter": "datum.war_total >= 50"},
     {
+      "calculate": "datum.memorials / datum.war_total * 100",
+      "as": "percent"
+    },
+    {
+      "joinaggregate": [
+        {"op": "max", "field": "percent", "as": "type_max"}
+      ],
+      "groupby": ["type_main"]
+    },
+    {
+      "calculate": "datum.type_max < 5 ? 'Other types' : datum.type_main",
+      "as": "type"
+    },
+    {
+      "aggregate": [
+        {"op": "sum", "field": "memorials", "as": "memorials"}
+      ],
+      "groupby": ["type", "war"]
+    },
+    {
+      "impute": "memorials",
+      "key": "war",
+      "groupby": ["type"],
+      "value": 0
+    },
+    {
+      "joinaggregate": [
+        {"op": "sum", "field": "memorials", "as": "war_total"}
+      ],
+      "groupby": ["war"]
+    },
+    {
       "joinaggregate": [
         {"op": "sum", "field": "memorials", "as": "type_total"}
       ],
-      "groupby": [
-        "type_main"
-      ]
+      "groupby": ["type"]
     },
     {
       "calculate": "datum.memorials / datum.war_total * 100",
       "as": "percent"
+    },
+    {
+      "calculate": "datum.type == 'Other types' ? -1 : datum.type_total",
+      "as": "row_order"
+    },
+    {
+      "calculate": "datum.percent < 1 ? '0–1%' : datum.percent < 5 ? '1–5%' : datum.percent < 10 ? '5–10%' : datum.percent < 20 ? '10–20%' : datum.percent < 35 ? '20–35%' : '35% or more'",
+      "as": "band"
     }
   ],
   "encoding": {
@@ -64,11 +102,11 @@
       "title": null,
       "sort": [
         "Boer War",
-        "WWI",
-        "WWII",
+        "First World War",
+        "Second World War",
         "Malayan Emergency",
         "Korean War",
-        "Confrontation",
+        "Indonesian Confrontation",
         "Vietnam War",
         "Peacekeeping",
         "Gulf War",
@@ -85,11 +123,11 @@
       }
     },
     "y": {
-      "field": "type_main",
+      "field": "type",
       "type": "ordinal",
       "title": null,
       "sort": {
-        "field": "type_total",
+        "field": "row_order",
         "op": "max",
         "order": "descending"
       },
@@ -105,28 +143,27 @@
       "mark": {"type": "rect", "stroke": "#fbf9f4", "strokeWidth": 1.5},
       "encoding": {
         "color": {
-          "field": "percent",
-          "type": "quantitative",
+          "field": "band",
+          "type": "ordinal",
           "scale": {
-            "type": "threshold",
-            "domain": [1, 5, 10, 20, 35],
-            "range": ["#f6f2e8", "#e9dcc0", "#d6bd86", "#bb9345", "#8c6420", "#5a3d0e"]
+            "domain": ["0–1%", "1–5%", "5–10%", "10–20%", "20–35%", "35% or more"],
+            "range": ["#eee9dc", "#efd5bd", "#d99a80", "#c4604a", "#a32a1c", "#5e0f08"]
           },
           "legend": {
-            "title": "Share of the war's memorials (%)",
+            "title": "Share of the war's memorials",
             "titleLimit": 320,
             "orient": "bottom",
-            "type": "symbol",
             "direction": "horizontal",
+            "columns": 3,
             "symbolType": "square",
             "symbolSize": 200,
-            "columns": 6,
-            "format": ".0f"
+            "columnPadding": 18,
+            "rowPadding": 6
           }
         },
         "tooltip": [
           {
-            "field": "type_main",
+            "field": "type",
             "type": "nominal",
             "title": "Memorial type"
           },
@@ -155,24 +192,23 @@
       }
     },
     {
-      "transform": [
-        {
-          "filter": "datum.percent >= 5"
-        }
-      ],
       "mark": {
         "type": "text",
-        "fontSize": 11
+        "fontSize": 14
       },
       "encoding": {
         "text": {
-          "field": "percent",
-          "type": "quantitative",
-          "format": ".0f"
+          "condition": {
+            "test": "datum.percent >= 5",
+            "field": "percent",
+            "type": "quantitative",
+            "format": ".0f"
+          },
+          "value": ""
         },
         "color": {
           "condition": {
-            "test": "datum.percent >= 20",
+            "test": "datum.percent >= 10",
             "value": "#ffffff"
           },
           "value": "#2b2a27"
@@ -180,12 +216,16 @@
       }
     },
     {
-      "transform": [
-        {
-          "filter": "indexof(['WWI|Honour board', 'Vietnam War|Honour board', 'WWI|Stone/cairn/plinth', 'Vietnam War|Stone/cairn/plinth', 'Malayan Emergency|Stone/cairn/plinth'], datum.war + '|' + datum.type_main) >= 0"
+      "mark": {"type": "rect", "fill": null, "stroke": "#2b2a27", "strokeWidth": 2.5},
+      "encoding": {
+        "strokeOpacity": {
+          "condition": {
+            "test": "indexof(['First World War|Honour board', 'Vietnam War|Honour board', 'First World War|Stone/cairn/plinth', 'Vietnam War|Stone/cairn/plinth', 'Malayan Emergency|Stone/cairn/plinth'], datum.war + '|' + datum.type) >= 0",
+            "value": 1
+          },
+          "value": 0
         }
-      ],
-      "mark": {"type": "rect", "fill": null, "stroke": "#111111", "strokeWidth": 2.5}
+      }
     }
   ],
   "config": {

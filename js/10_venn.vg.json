@@ -1,11 +1,62 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Venn diagram of the 1,399 Queensland war memorials: how many honour the First World War, the Second World War, both, or neither. Circles are not drawn to scale.",
+  "description": "Venn diagram of the 1,399 Queensland war memorials: how many honour the First World War, the Second World War, both, or neither. The box holds every memorial. Circles are not drawn to scale.",
   "width": 460,
-  "height": 330,
+  "height": 390,
   "padding": 4,
   "view": {"stroke": null},
   "layer": [
+    {
+      "data": {"url": "data/qld_memorials.csv"},
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "count",
+              "as": "memorials"
+            }
+          ]
+        },
+        {
+          "calculate": "'All Queensland memorials: ' + format(datum.memorials, ',')",
+          "as": "title"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "rect",
+            "fill": "#fbf9f4",
+            "stroke": "#756f62",
+            "strokeWidth": 1,
+            "cornerRadius": 4
+          },
+          "encoding": {
+            "x": {"value": 1},
+            "x2": {"value": 459},
+            "y": {"value": 1},
+            "y2": {"value": 388}
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "fontSize": 14,
+            "fontWeight": 600,
+            "color": "#4a473f",
+            "x": 16,
+            "y": 24
+          },
+          "encoding": {
+            "text": {
+              "field": "title",
+              "type": "nominal"
+            }
+          }
+        }
+      ]
+    },
     {
       "data": {
         "values": [
@@ -24,7 +75,7 @@
           "scale": null,
           "axis": null
         },
-        "y": {"value": 170},
+        "y": {"value": 200},
         "color": {
           "field": "set",
           "type": "nominal",
@@ -70,7 +121,7 @@
           "as": "px"
         },
         {
-          "calculate": "datum.region == 'Neither world war' ? 312 : 165",
+          "calculate": "datum.region == 'Neither world war' ? 342 : 195",
           "as": "py"
         }
       ],
@@ -80,7 +131,7 @@
             "type": "text",
             "fontSize": 28,
             "fontWeight": 700,
-            "font": "Source Sans 3, sans-serif"
+            "font": "'Source Sans 3', sans-serif"
           },
           "encoding": {
             "x": {
@@ -123,7 +174,7 @@
         {
           "mark": {
             "type": "text",
-            "fontSize": 12,
+            "fontSize": 14,
             "dy": 24
           },
           "encoding": {
@@ -179,10 +230,10 @@
       ],
       "mark": {
         "type": "text",
-        "fontSize": 13,
+        "fontSize": 14,
         "fontWeight": 600,
         "color": "#2b2a27",
-        "y": 16
+        "y": 54
       },
       "encoding": {
         "x": {

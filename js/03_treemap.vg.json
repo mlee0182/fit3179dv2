@@ -101,7 +101,7 @@
         "Trees, parks and gardens",
         "Other"
       ],
-      "range": ["#b8281c", "#cdc5b1", "#d9d2c0", "#d0cfc8", "#e6e0d1"]
+      "range": ["#b8281c", "#d9d2c0", "#d9d2c0", "#d9d2c0", "#d9d2c0"]
     }
   ],
   "marks": [
@@ -153,14 +153,14 @@
       "encode": {
         "enter": {
           "x": {"field": "x0", "offset": 7},
-          "y": {"field": "y0", "offset": 16},
+          "y": {"field": "y0", "offset": 17},
           "text": {
             "signal": "upper(datum.family) + '  ·  ' + format(datum.total, ',')"
           },
-          "fontSize": {"value": 11},
+          "fontSize": {"value": 14},
           "fontWeight": {"value": "bold"},
           "font": {
-            "value": "Source Sans 3, sans-serif"
+            "value": "'Source Sans 3', sans-serif"
           },
           "fill": {"value": "#2b2a27"},
           "limit": {
@@ -175,13 +175,13 @@
       "encode": {
         "enter": {
           "x": {"field": "x0", "offset": 6},
-          "y": {"field": "y0", "offset": 15},
+          "y": {"field": "y0", "offset": 17},
           "text": {
-            "signal": "(datum.x1 - datum.x0 > 52 && datum.y1 - datum.y0 > 26) ? datum.memorial_type : ''"
+            "signal": "(datum.x1 - datum.x0 > 60 && datum.y1 - datum.y0 > 28) ? datum.memorial_type : ''"
           },
-          "fontSize": {"value": 12},
+          "fontSize": {"value": 14},
           "font": {
-            "value": "Source Sans 3, sans-serif"
+            "value": "'Source Sans 3', sans-serif"
           },
           "fontWeight": {"value": 600},
           "fill": {
@@ -199,16 +199,38 @@
       "encode": {
         "enter": {
           "x": {"field": "x0", "offset": 6},
-          "y": {"field": "y0", "offset": 30},
+          "y": {"field": "y0", "offset": 35},
           "text": {
-            "signal": "(datum.x1 - datum.x0 > 52 && datum.y1 - datum.y0 > 40) ? format(datum.count, ',') : ''"
+            "signal": "(datum.x1 - datum.x0 > 60 && datum.y1 - datum.y0 > 44) ? format(datum.count, ',') : ''"
           },
-          "fontSize": {"value": 11},
+          "fontSize": {"value": 14},
           "font": {
-            "value": "Source Sans 3, sans-serif"
+            "value": "'Source Sans 3', sans-serif"
           },
           "fill": {
             "signal": "datum.family == 'Rolls and boards' ? '#ffffff' : '#4a473f'"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {"data": "leaves"},
+      "encode": {
+        "enter": {
+          "x": {"field": "x0", "offset": 6},
+          "y": {"field": "y0", "offset": 60},
+          "text": {
+            "signal": "datum.memorial_type == 'Other' ? 'The register’s own catch-all type' : ''"
+          },
+          "fontSize": {"value": 14},
+          "fontStyle": {"value": "italic"},
+          "font": {
+            "value": "'Source Sans 3', sans-serif"
+          },
+          "fill": {"value": "#4a473f"},
+          "limit": {
+            "signal": "datum.x1 - datum.x0 - 12"
           }
         }
       }

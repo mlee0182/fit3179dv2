@@ -113,11 +113,15 @@
           "transform": [
             {
               "filter": "datum.lga_name == 'Brisbane'"
+            },
+            {
+              "calculate": "[datum.label, 'About 1 in 5 Queensland memorials']",
+              "as": "label"
             }
           ],
           "mark": {
             "type": "text",
-            "fontSize": 12,
+            "fontSize": 14,
             "fontWeight": 700,
             "color": "#2b2a27",
             "align": "center",
@@ -147,7 +151,7 @@
           ],
           "mark": {
             "type": "text",
-            "fontSize": 12,
+            "fontSize": 14,
             "fontWeight": 700,
             "color": "#2b2a27",
             "align": "right",
@@ -177,7 +181,7 @@
           ],
           "mark": {
             "type": "text",
-            "fontSize": 12,
+            "fontSize": 14,
             "fontWeight": 700,
             "color": "#2b2a27",
             "align": "center",

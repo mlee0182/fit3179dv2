@@ -1,18 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Dot map of every war memorial in the Queensland register. One dot is one memorial. Dots honouring the selected war are red.",
+  "description": "Dot map of every war memorial in the Queensland register. One dot is one memorial. Dots honouring the First World War are red.",
   "width": "container",
   "height": 560,
   "autosize": {
     "type": "fit",
     "contains": "padding"
   },
-  "params": [
-    {
-      "name": "conflict",
-      "value": "First World War"
-    }
-  ],
   "projection": {
     "type": "conicEqualArea",
     "parallels": [-14, -25],
@@ -36,7 +30,7 @@
           "filter": "lower(toString(datum.coords_ok)) == 'true'"
         },
         {
-          "calculate": "indexof(datum.conflicts || '', conflict) >= 0 ? 'Honours this war' : 'Does not honour it'",
+          "calculate": "indexof(datum.conflicts || '', 'First World War') >= 0 ? 'Honours this war' : 'Does not honour it'",
           "as": "match"
         }
       ],
@@ -58,7 +52,7 @@
               "Honours this war",
               "Does not honour it"
             ],
-            "range": ["#b8281c", "#a8a28f"]
+            "range": ["#b8281c", "#9b958a"]
           },
           "legend": {
             "title": null,
@@ -120,7 +114,39 @@
       "mark": {
         "type": "text",
         "align": "right",
-        "fontSize": 12,
+        "fontSize": 14,
+        "fontStyle": "italic",
+        "color": "#4a473f"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "note",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "lon": 138.4,
+            "lat": -25.0,
+            "note": "Few memorials across the remote west"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 14,
         "fontStyle": "italic",
         "color": "#4a473f"
       },

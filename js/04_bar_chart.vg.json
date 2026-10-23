@@ -20,7 +20,7 @@
       "as": "war"
     },
     {
-      "calculate": "format(datum.count, ',') + (datum.conflict == 'Malayan Emergency' ? '  —  more tags than the Boer War' : '')",
+      "calculate": "format(datum.count, ',') + ({'Malayan Emergency': '  —  more tags than the Boer War', 'Thai-Malay': '  —  Thai–Malaysian border, 1960–64'}[datum.conflict] || '')",
       "as": "label"
     }
   ],
@@ -94,7 +94,7 @@
         "type": "text",
         "align": "left",
         "dx": 4,
-        "fontSize": 12,
+        "fontSize": 14,
         "fontWeight": 600,
         "color": "#2b2a27"
       },
@@ -111,6 +111,29 @@
         "text": {
           "field": "label",
           "type": "nominal"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -8,
+        "fontSize": 14,
+        "fontWeight": 600,
+        "color": "#ffffff"
+      },
+      "encoding": {
+        "x": {
+          "field": "count",
+          "type": "quantitative"
+        },
+        "text": {
+          "condition": {
+            "test": "datum.conflict == 'First World War'",
+            "value": "Most commemorated war"
+          },
+          "value": ""
         }
       }
     }

@@ -1,9 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "Word cloud of the words engraved on Queensland war memorials. Larger words are used more often. Editors' notes in square brackets and common little words are removed.",
+  "description": "Word cloud of the words engraved on Queensland war memorials, showing words used 36 times or more. Larger words are used more often. Red words are named in the headline; dark words come from three set phrases; editors' notes in square brackets and common little words are removed.",
   "width": 1000,
-  "height": 360,
-  "padding": 28,
+  "height": 330,
+  "padding": 12,
   "autosize": "pad",
   "data": [
     {
@@ -25,22 +25,9 @@
         },
         {
           "type": "filter",
-          "expr": "datum.count >= 6"
-        },
-        {
-          "type": "formula",
-          "expr": "datum.count < 25 && length(datum.text) % 3 == 0 ? 90 : 0",
-          "as": "angle"
+          "expr": "datum.count >= 36"
         }
       ]
-    }
-  ],
-  "scales": [
-    {
-      "name": "color",
-      "type": "ordinal",
-      "domain": {"data": "words", "field": "text"},
-      "range": ["#975b20", "#275267", "#725e44", "#3e1875", "#2788b9", "#7a56db"]
     }
   ],
   "marks": [
@@ -54,7 +41,9 @@
             "value": "center"
           },
           "baseline": {"value": "alphabetic"},
-          "fill": {"scale": "color", "field": "text"},
+          "fill": {
+            "signal": "indexof(['honour', 'memory', 'sacrifice'], datum.text) >= 0 ? '#b8281c' : indexof(['lest', 'forget', 'supreme', 'liveth', 'evermore'], datum.text) >= 0 ? '#2b2a27' : '#9b958a'"
+          },
           "tooltip": {
             "signal": "{'Word': datum.text, 'Times used': datum.count}"
           }
@@ -78,16 +67,14 @@
             }
           ],
           "text": {"field": "text"},
-          "rotate": {
-            "field": "datum.angle"
-          },
+          "rotate": 0,
           "font": "Cormorant Garamond",
           "fontWeight": "700",
           "fontSize": {
             "field": "datum.count"
           },
-          "fontSizeRange": [13, 78],
-          "padding": 3
+          "fontSizeRange": [20, 86],
+          "padding": 4
         }
       ]
     }

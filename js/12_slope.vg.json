@@ -31,7 +31,7 @@
       "as": "highlight"
     },
     {
-      "calculate": "{'First World War': '#975b20', 'Second World War': '#275267', 'Vietnam War': '#3e1875', 'Korean War': '#2788b9', 'Malayan Emergency': '#dba156'}[datum.conflict] || '#b8b2a3'",
+      "calculate": "{'First World War': '#975b20', 'Second World War': '#275267', 'Vietnam War': '#3e1875', 'Korean War': '#2788b9', 'Malayan Emergency': '#dba156'}[datum.conflict] || '#9b958a'",
       "as": "line_color"
     },
     {
@@ -65,7 +65,7 @@
         "labelAngle": 0,
         "labelAlign": "center",
         "labelFontWeight": 700,
-        "labelFontSize": 13,
+        "labelFontSize": 14,
         "labelPadding": 12,
         "domain": false,
         "ticks": false,
@@ -124,7 +124,7 @@
         ],
         "color": {
           "condition": {"param": "hover", "empty": false, "value": "#2b2a27"},
-          "value": "#b8b2a3"
+          "value": "#9b958a"
         },
         "strokeWidth": {
           "condition": {"param": "hover", "empty": false, "value": 3},
@@ -239,7 +239,7 @@
         "type": "text",
         "align": "right",
         "dx": -9,
-        "fontSize": 12,
+        "fontSize": 14,
         "fontWeight": 600
       },
       "encoding": {
@@ -262,7 +262,7 @@
         "type": "text",
         "align": "left",
         "dx": 9,
-        "fontSize": 12,
+        "fontSize": 14,
         "fontWeight": 600
       },
       "encoding": {
@@ -284,7 +284,7 @@
         "type": "text",
         "align": "left",
         "dx": 9,
-        "fontSize": 12,
+        "fontSize": 14,
         "fontWeight": 600,
         "color": "#2b2a27"
       },
@@ -314,7 +314,7 @@
         "type": "text",
         "align": "left",
         "dx": 14,
-        "fontSize": 12,
+        "fontSize": 14,
         "fontStyle": "italic",
         "color": "#4a473f"
       },

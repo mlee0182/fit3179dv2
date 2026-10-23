@@ -10,11 +10,24 @@
     "contains": "padding"
   },
   "padding": {
-    "top": 6,
+    "top": 13,
     "left": 36,
     "right": 12,
     "bottom": 6
   },
+  "params": [
+    {
+      "name": "pickYear",
+      "value": 1880,
+      "bind": {
+        "input": "range",
+        "min": 1880,
+        "max": 2021,
+        "step": 1,
+        "name": "Pick a year "
+      }
+    }
+  ],
   "data": {
     "url": "data/awm_deaths_by_conflict.csv",
     "format": {
@@ -61,6 +74,14 @@
     {
       "calculate": "format(datum.years, datum.years < 10 ? '.1f' : '.0f') + ' years  ·  ' + format(datum.deaths, ',') + ' deaths'",
       "as": "label"
+    },
+    {
+      "calculate": "utcyear(datum.start_date) <= pickYear && pickYear <= utcyear(datum.end_date)",
+      "as": "active"
+    },
+    {
+      "calculate": "pickYear == 1880 || datum.active",
+      "as": "on"
     }
   ],
   "encoding": {
@@ -74,6 +95,7 @@
       "title": null,
       "axis": {
         "labelLimit": 220,
+        "labelPadding": 14,
         "domain": false,
         "ticks": false
       }
@@ -131,6 +153,7 @@
               }
             ],
             "format": "%Y",
+            "labelFlush": false,
             "grid": true,
             "domain": false
           }
@@ -146,6 +169,13 @@
             "range": ["#975b20", "#275267", "#725e44", "#3e1875", "#2788b9", "#dba156", "#7a56db", "#9b958a"]
           },
           "legend": null
+        },
+        "opacity": { 
+          "condition": {
+            "test": "datum.on",
+            "value": 1
+          },
+          "value": 0.2
         },
         "tooltip": [
           {
@@ -179,7 +209,7 @@
         "type": "text",
         "align": "left",
         "dx": 6,
-        "fontSize": 11,
+        "fontSize": 14,
         "color": "#4a473f"
       },
       "encoding": {
@@ -190,8 +220,92 @@
         "text": {
           "field": "label",
           "type": "nominal"
+        },
+        "opacity": {
+          "condition": {
+            "test": "datum.on",
+            "value": 1
+          },
+          "value": 0.35
         }
       }
+    },
+    {
+      "transform": [
+        {
+          "calculate": "datum.active ? 1 : 0",
+          "as": "active_n"
+        },
+        {
+          "aggregate": [
+            {
+              "op": "sum",
+              "field": "active_n",
+              "as": "n"
+            }
+          ]
+        },
+        {
+          "calculate": "datetime(pickYear, 6, 1)",
+          "as": "picked"
+        },
+        {
+          "calculate": "pickYear == 1880 ? 'Drag the slider to pick a year' : pickYear + '  ·  ' + (datum.n == 0 ? 'none' : datum.n) + ' of these wars under way'",
+          "as": "readout"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "picked",
+          "type": "temporal"
+        },
+        "y": {
+          "value": 0
+        }
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "rule",
+            "color": "#b8281c",
+            "strokeWidth": 2
+          },
+          "encoding": {
+            "y2": {
+              "value": "height"
+            },
+            "opacity": {
+              "condition": {
+                "test": "pickYear == 1880",
+                "value": 0
+              },
+              "value": 1
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": {
+              "expr": "pickYear > 1950 ? 'right' : 'left'"
+            },
+            "baseline": "bottom",
+            "dx": {
+              "expr": "pickYear > 1950 ? -4 : 4"
+            },
+            "dy": -23,
+            "fontSize": 14,
+            "fontWeight": 600,
+            "color": "#b8281c"
+          },
+          "encoding": {
+            "text": {
+              "field": "readout",
+              "type": "nominal"
+            }
+          }
+        }
+      ]
     },
     {
       "data": {
@@ -208,7 +322,7 @@
         "type": "text",
         "align": "right",
         "dx": -10,
-        "fontSize": 12,
+        "fontSize": 14,
         "fontStyle": "italic",
         "color": "#4a473f"
       },

@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Waffle chart. Each square is about 500 Australian deaths, coloured by conflict. Source: Australian War Memorial.",
+  "description": "Waffle chart. Each full square is 500 Australian deaths, coloured by conflict; a war's last square is filled only by its leftover share of 500, inside an outline of a full square. Source: Australian War Memorial.",
   "width": "container",
   "height": "container",
   "config": {
@@ -37,15 +37,23 @@
           "as": "label"
         },
         {
-          "calculate": "max(1, round(datum.group_deaths / 500))",
+          "calculate": "datum.group_deaths / 500",
           "as": "squares"
         },
         {
-          "calculate": "sequence(datum.squares)",
+          "calculate": "sequence(ceil(datum.squares))",
           "as": "square_no"
         },
         {
           "flatten": ["square_no"]
+        },
+        {
+          "calculate": "min(1, datum.squares - datum.square_no)",
+          "as": "fill_share"
+        },
+        {
+          "calculate": "'M-1,-1H' + (2 * datum.fill_share - 1) + 'V1H-1Z'",
+          "as": "shape_path"
         },
         {
           "window": [
@@ -57,6 +65,9 @@
           "sort": [
             {
               "field": "order"
+            },
+            {
+              "field": "square_no"
             }
           ]
         },
@@ -69,13 +80,6 @@
           "as": "row"
         }
       ],
-      "mark": {
-        "type": "square",
-        "size": {
-          "expr": "pow(min(width / 24, height / 10) * 0.8, 2)"
-        },
-        "opacity": 1
-      },
       "encoding": {
         "x": {
           "field": "col",
@@ -86,27 +90,6 @@
           "field": "row",
           "type": "ordinal",
           "axis": null
-        },
-        "color": {
-          "field": "label",
-          "type": "nominal",
-          "sort": {
-            "field": "order",
-            "op": "min"
-          },
-          "scale": {
-            "range": ["#975b20", "#275267", "#725e44", "#3e1875", "#2788b9", "#dba156", "#9b958a"]
-          },
-          "legend": {
-            "title": "1 square ≈ 500 deaths",
-            "orient": "bottom",
-            "columns": 1,
-            "symbolType": "square",
-            "symbolSize": 140,
-            "rowPadding": 4,
-            "labelLimit": 260,
-            "titleLimit": 240
-          }
         },
         "tooltip": [
           {
@@ -123,25 +106,94 @@
           {
             "field": "squares",
             "type": "quantitative",
-            "title": "Squares drawn"
+            "title": "Squares (500 deaths each)",
+            "format": ".2~f"
           }
         ]
-      }
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "point",
+            "filled": true,
+            "opacity": 1,
+            "size": {
+              "expr": "pow(min(width / 24, height / 10) * 0.8, 2)"
+            }
+          },
+          "encoding": {
+            "shape": {
+              "field": "shape_path",
+              "type": "nominal",
+              "scale": null
+            },
+            "color": {
+              "field": "label",
+              "type": "nominal",
+              "sort": {
+                "field": "order",
+                "op": "min"
+              },
+              "scale": {
+                "range": ["#975b20", "#275267", "#725e44", "#3e1875", "#2788b9", "#dba156", "#9b958a"]
+              },
+              "legend": {
+                "title": "1 full square = 500 deaths",
+                "orient": "bottom",
+                "columns": 1,
+                "symbolType": "square",
+                "symbolSize": 140,
+                "rowPadding": 4,
+                "labelLimit": 260,
+                "titleLimit": 240
+              }
+            }
+          }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.fill_share < 1"
+            }
+          ],
+          "mark": {
+            "type": "square",
+            "filled": true,
+            "fill": "transparent",
+            "strokeWidth": 1,
+            "size": {
+              "expr": "pow(min(width / 24, height / 10) * 0.8, 2)"
+            }
+          },
+          "encoding": {
+            "stroke": {
+              "field": "group",
+              "type": "nominal",
+              "scale": {
+                "domain": ["First World War", "Second World War", "Boer War", "Vietnam War", "Korean War", "Malayan Emergency", "All other conflicts"],
+                "range": ["#975b20", "#275267", "#725e44", "#3e1875", "#2788b9", "#dba156", "#9b958a"]
+              },
+              "legend": null
+            }
+          }
+        }
+      ]
     },
     {
       "data": {
         "values": [
           {
-            "col": 10,
+            "col": 0,
             "row": 9,
-            "note": "↑ Smaller wars: one square each"
+            "note": "Part-filled squares: fewer than 500 deaths"
           }
         ]
       },
       "mark": {
         "type": "text",
         "align": "left",
-        "fontSize": 12,
+        "dx": -6,
+        "fontSize": 14,
         "fontStyle": "italic",
         "color": "#4a473f"
       },
