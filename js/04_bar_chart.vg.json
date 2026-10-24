@@ -20,7 +20,7 @@
       "as": "war"
     },
     {
-      "calculate": "format(datum.count, ',') + ({'Malayan Emergency': '  —  more tags than the Boer War', 'Thai-Malay': '  —  Thai–Malaysian border, 1960–64'}[datum.conflict] || '')",
+      "calculate": "format(datum.count, ',') + ({'Malayan Emergency': '  —  more memorials than the Boer War', 'Thai-Malay': '  —  Thai–Malaysian border, 1960–64'}[datum.conflict] || '')",
       "as": "label"
     }
   ],
@@ -49,7 +49,7 @@
         "x": {
           "field": "count",
           "type": "quantitative",
-          "title": "Memorial tags in the national register",
+          "title": "Memorials honouring each war (national register)",
           "axis": {
             "format": ",.0f",
             "grid": true,
@@ -83,7 +83,7 @@
           {
             "field": "count",
             "type": "quantitative",
-            "title": "Memorials tagged",
+            "title": "Memorials honouring this war",
             "format": ","
           }
         ]

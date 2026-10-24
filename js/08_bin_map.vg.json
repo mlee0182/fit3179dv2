@@ -10,7 +10,8 @@
   "projection": {
     "type": "conicEqualArea",
     "parallels": [-14, -25],
-    "rotate": [-146, 0]
+    "rotate": [-146, 0],
+    "extent": {"expr": "[[0, 10], [width - 50, height - 34]]"}
   },
   "layer": [
     {
@@ -112,7 +113,7 @@
           "transform": [
             {"filter": "datum.memorials >= 100"},
             {
-              "calculate": "'Brisbane area: ' + datum.memorials + ' memorials'",
+              "calculate": "['Brisbane:', datum.memorials]",
               "as": "note"
             }
           ],

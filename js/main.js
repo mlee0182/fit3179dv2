@@ -3,9 +3,9 @@ var CHARTS = [
   ['chart-gantt', 'js/02_gantt.vg.json'],
   ['chart-treemap', 'js/03_treemap.vg.json', 'fixed'],
   ['chart-bar', 'js/04_bar_chart.vg.json'],
-  ['chart-dot', 'js/05_dot_map.vg.json'],
-  ['chart-choropleth', 'js/06_choropleth.vg.json'],
-  ['chart-symbol', 'js/07_proportional_symbol_map.vg.json'],
+  ['chart-dot', 'js/05_dot_map.vg.json', 'war'],
+  ['chart-choropleth', 'js/06_choropleth.vg.json', 'war'],
+  ['chart-symbol', 'js/07_graduated_symbol_map.vg.json'],
   ['chart-bin', 'js/08_bin_map.vg.json'],
   ['chart-heatmap', 'js/09_heatmap.vg.json'],
   ['chart-venn', 'js/10_venn.vg.json', 'fixed'],
@@ -100,6 +100,68 @@ function alignYearSlider() {
   label.style.setProperty('--track-left', (start - thumb / 2) + 'px');
   label.style.setProperty('--track-width', (end - start + thumb) + 'px');
 }
+
+var memorialRows = null;
+
+function fmt(n) { return n.toLocaleString('en-AU'); }
+
+function updateReadout(war) {
+  if (!memorialRows) { return; }
+  var hits = 0;
+  for (var i = 0; i < memorialRows.length; i++) {
+    if ((memorialRows[i].conflicts || '').indexOf(war) >= 0) { hits++; }
+  }
+  document.getElementById('war-count').textContent = fmt(hits);
+  document.getElementById('war-total').textContent = fmt(memorialRows.length);
+  document.getElementById('war-share').textContent = Math.round(hits / memorialRows.length * 100);
+
+  // Highest and lowest share among councils with 10+ memorials, the choropleth's cut-off
+  var tally = {};
+  memorialRows.forEach(function (r) {
+    var t = tally[r.lga_name] || (tally[r.lga_name] = {n: 0, hits: 0});
+    t.n++;
+    if ((r.conflicts || '').indexOf(war) >= 0) { t.hits++; }
+  });
+  var ranked = Object.keys(tally)
+    .filter(function (name) { return tally[name].n >= 10; })
+    .map(function (name) { return {name: name, n: tally[name].n, pct: Math.round(tally[name].hits / tally[name].n * 100)}; })
+    .sort(function (a, b) { return a.pct - b.pct; });
+  function describe(c) { return c.name + ', ' + c.pct + '% of ' + c.n + ' memorials'; }
+  var low = ranked[0];
+  var lowTies = ranked.filter(function (c) { return c.pct === low.pct; }).length;
+  document.getElementById('top-council').textContent = describe(ranked[ranked.length - 1]);
+  document.getElementById('low-council').textContent =
+    lowTies > 1 ? lowTies + ' councils, ' + low.pct + '% each' : describe(low);
+}
+
+function selectWar(button) {
+  var buttons = document.querySelectorAll('.war-buttons button');
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].setAttribute('aria-pressed', buttons[i] === button ? 'true' : 'false');
+  }
+  var war = button.getAttribute('data-war');
+  CHARTS.forEach(function (spec) {
+    if (spec[2] === 'war' && views[spec[0]]) {
+      views[spec[0]].signal('conflict', war).run();
+    }
+  });
+  var names = document.querySelectorAll('.selected-war');
+  for (var j = 0; j < names.length; j++) { names[j].textContent = button.textContent; }
+  updateReadout(war);
+}
+
+var warButtons = document.querySelectorAll('.war-buttons button');
+for (var b = 0; b < warButtons.length; b++) {
+  warButtons[b].addEventListener('click', function (e) { selectWar(e.currentTarget); });
+}
+
+loader.load('data/qld_memorials.csv')
+  .then(function (text) {
+    memorialRows = vega.read(text, {type: 'csv'});
+    var pressed = document.querySelector('.war-buttons button[aria-pressed="true"]');
+    updateReadout(pressed.getAttribute('data-war'));
+  })
+  .catch(function (err) { console.error('Could not read the memorial data for the count', err); });
 
 function toggleHowTo(e) {
   var button = e.currentTarget;

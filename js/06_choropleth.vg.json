@@ -1,12 +1,18 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Choropleth map. Each council is shaded by the percentage of its war memorials that honour the First World War. Councils with fewer than ten memorials are left pale because a percentage from so few would be misleading.",
+  "description": "Choropleth map. Each council is shaded by the percentage of its war memorials that honour the selected war. Councils with fewer than ten memorials are left pale because a percentage from so few would be misleading.",
   "width": "container",
   "height": 560,
   "autosize": {
     "type": "fit",
     "contains": "padding"
   },
+  "params": [
+    {
+      "name": "conflict",
+      "value": "First World War"
+    }
+  ],
   "projection": {
     "type": "conicEqualArea",
     "parallels": [-14, -25],
@@ -47,7 +53,7 @@
       "data": {"url": "data/qld_memorials.csv"},
       "transform": [
         {
-          "calculate": "indexof(datum.conflicts || '', 'First World War') >= 0 ? 1 : 0",
+          "calculate": "indexof(datum.conflicts || '', conflict) >= 0 ? 1 : 0",
           "as": "hit"
         },
         {
@@ -133,7 +139,7 @@
                 "title": [
                   "% of memorials",
                   "honouring the",
-                  "First World War"
+                  "selected war"
                 ],
                 "orient": "top-right",
                 "type": "symbol",

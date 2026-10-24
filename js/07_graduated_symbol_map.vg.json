@@ -1,0 +1,357 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "description": "Graduated symbol map. Each circle is a council. Councils fall into five classes by number of war memorials (1-9, 10-24, 25-49, 50-99, 100 or more), and each class has one circle size. Circles start at the average position of the council's memorials, then a force layout nudges them apart so none hides another.",
+  "height": 560,
+  "padding": 0,
+  "autosize": "none",
+  "signals": [
+    {
+      "name": "width",
+      "init": "isFinite(containerSize()[0]) ? containerSize()[0] : 540",
+      "on": [
+        {
+          "events": "window:resize",
+          "update": "isFinite(containerSize()[0]) ? containerSize()[0] : 540"
+        }
+      ]
+    }
+  ],
+  "projections": [
+    {
+      "name": "projection",
+      "type": "conicEqualArea",
+      "parallels": [
+        -14,
+        -25
+      ],
+      "rotate": [
+        -146,
+        0
+      ],
+      "fit": {
+        "signal": "data('councils')"
+      },
+      "extent": {
+        "signal": "[[0, 10], [width - 50, height - 34]]"
+      }
+    }
+  ],
+  "data": [
+    {
+      "name": "councils",
+      "url": "data/qld_councils.json",
+      "format": {
+        "type": "topojson",
+        "feature": "qld_lga"
+      }
+    },
+    {
+      "name": "counts",
+      "url": "data/qld_memorials.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "latitude": "number",
+          "longitude": "number"
+        }
+      },
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "lower(toString(datum.coords_ok)) == 'true' ? datum.latitude : null",
+          "as": "good_lat"
+        },
+        {
+          "type": "formula",
+          "expr": "lower(toString(datum.coords_ok)) == 'true' ? datum.longitude : null",
+          "as": "good_lon"
+        },
+        {
+          "type": "aggregate",
+          "groupby": [
+            "lga_name"
+          ],
+          "fields": [
+            null,
+            "good_lat",
+            "good_lon"
+          ],
+          "ops": [
+            "count",
+            "mean",
+            "mean"
+          ],
+          "as": [
+            "memorials",
+            "lat",
+            "lon"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "dorling",
+      "source": "counts",
+      "transform": [
+        {
+          "type": "geopoint",
+          "projection": "projection",
+          "fields": [
+            "lon",
+            "lat"
+          ],
+          "as": [
+            "x0",
+            "y0"
+          ]
+        },
+        {
+          "type": "formula",
+          "expr": "datum.x0",
+          "as": "x"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.y0",
+          "as": "y"
+        },
+        {
+          "type": "formula",
+          "expr": "sqrt(scale('size', datum.memorials) / PI)",
+          "as": "r"
+        },
+        {
+          "type": "force",
+          "static": true,
+          "iterations": 300,
+          "forces": [
+            {
+              "force": "collide",
+              "radius": {
+                "expr": "datum.r + 1.5"
+              },
+              "iterations": 2
+            },
+            {
+              "force": "x",
+              "x": "x0",
+              "strength": 0.2
+            },
+            {
+              "force": "y",
+              "y": "y0",
+              "strength": 0.2
+            }
+          ],
+          "restart": true
+        }
+      ]
+    },
+    {
+      "name": "labels",
+      "source": "dorling",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.memorials >= 79"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.lga_name + ': ' + datum.memorials",
+          "as": "label"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "size",
+      "type": "threshold",
+      "domain": [
+        10,
+        25,
+        50,
+        100
+      ],
+      "range": [
+        50,
+        154,
+        380,
+        804,
+        1810
+      ]
+    }
+  ],
+  "legends": [
+    {
+      "size": "size",
+      "title": [
+        "Memorials",
+        "in the council"
+      ],
+      "orient": "top-right",
+      "symbolType": "circle",
+      "symbolFillColor": "#b8281c",
+      "symbolOpacity": 0.6,
+      "symbolStrokeColor": "#7e1a12",
+      "symbolStrokeWidth": 0.8,
+      "encode": {
+        "labels": {
+          "update": {
+            "text": {
+              "signal": "['1–9', '10–24', '25–49', '50–99', '100 or more'][datum.index]"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "marks": [
+    {
+      "type": "shape",
+      "from": {
+        "data": "councils"
+      },
+      "encode": {
+        "enter": {
+          "fill": {
+            "value": "#e9e4d6"
+          },
+          "stroke": {
+            "value": "#fbf9f4"
+          },
+          "strokeWidth": {
+            "value": 0.6
+          }
+        }
+      },
+      "transform": [
+        {
+          "type": "geoshape",
+          "projection": "projection"
+        }
+      ]
+    },
+    {
+      "type": "symbol",
+      "from": {
+        "data": "dorling"
+      },
+      "encode": {
+        "enter": {
+          "shape": {
+            "value": "circle"
+          },
+          "fill": {
+            "value": "#b8281c"
+          },
+          "fillOpacity": {
+            "value": 0.6
+          },
+          "stroke": {
+            "value": "#7e1a12"
+          },
+          "strokeWidth": {
+            "value": 0.8
+          }
+        },
+        "update": {
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "field": "y"
+          },
+          "size": {
+            "scale": "size",
+            "field": "memorials"
+          },
+          "tooltip": {
+            "signal": "{'Council': datum.lga_name, 'Memorials': datum.memorials}"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "labels"
+      },
+      "encode": {
+        "enter": {
+          "fontSize": {
+            "value": 14
+          },
+          "fontWeight": {
+            "value": 700
+          },
+          "fill": {
+            "value": "#f6f3ec"
+          },
+          "text": {
+            "field": "label"
+          },
+          "stroke": {
+            "value": "#f6f3ec"
+          },
+          "strokeWidth": {
+            "value": 4
+          },
+          "strokeJoin": {
+            "value": "round"
+          }
+        },
+        "update": {
+          "x": {
+            "signal": "datum.lga_name == 'Toowoomba' ? datum.x - datum.r - 6 : datum.x"
+          },
+          "y": {
+            "signal": "datum.lga_name == 'Brisbane' ? datum.y + datum.r + 4 : datum.lga_name == 'Toowoomba' ? datum.y : datum.y - datum.r - 4"
+          },
+          "align": {
+            "signal": "datum.lga_name == 'Toowoomba' ? 'right' : 'center'"
+          },
+          "baseline": {
+            "signal": "datum.lga_name == 'Brisbane' ? 'top' : datum.lga_name == 'Toowoomba' ? 'middle' : 'bottom'"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "labels"
+      },
+      "encode": {
+        "enter": {
+          "fontSize": {
+            "value": 14
+          },
+          "fontWeight": {
+            "value": 700
+          },
+          "fill": {
+            "value": "#2b2a27"
+          },
+          "text": {
+            "field": "label"
+          }
+        },
+        "update": {
+          "x": {
+            "signal": "datum.lga_name == 'Toowoomba' ? datum.x - datum.r - 6 : datum.x"
+          },
+          "y": {
+            "signal": "datum.lga_name == 'Brisbane' ? datum.y + datum.r + 4 : datum.lga_name == 'Toowoomba' ? datum.y : datum.y - datum.r - 4"
+          },
+          "align": {
+            "signal": "datum.lga_name == 'Toowoomba' ? 'right' : 'center'"
+          },
+          "baseline": {
+            "signal": "datum.lga_name == 'Brisbane' ? 'top' : datum.lga_name == 'Toowoomba' ? 'middle' : 'bottom'"
+          }
+        }
+      }
+    }
+  ]
+}

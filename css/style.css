@@ -123,6 +123,8 @@ p:last-child { margin-bottom: 0; }
 
 .chapter-head h2 { padding-right: 24px; }
 
+.question { max-width: 21em; margin: 6px 0 12px; font-family: var(--serif); font-size: 28px; font-weight: 600; line-height: 1.25; color: var(--ink); }
+.question + .lead { margin-top: 0; }
 .lead { max-width: 21em; margin: 6px 0 0; font-size: 21px; line-height: 1.55; color: var(--ink-soft); }
 
 .chart-block { margin: 0 0 72px; }
@@ -168,6 +170,16 @@ p:last-child { margin-bottom: 0; }
 
 figcaption { max-width: 32em; margin-top: 14px; font-size: var(--fs-small); line-height: 1.55; color: var(--ink-faint); }
 figcaption span { display: block; }
+
+/* Colour words in the text use the chart's own colour */
+.key-red { color: var(--poppy); }
+.key-darkred { color: #a32a1c; }
+.key-dark { color: var(--ink); }
+.key-grey { color: #9b958a; }
+.key-wwi { color: #975b20; }
+.key-vietnam { color: #3e1875; }
+.key-malaya { color: #dba156; }
+.key-pale { padding: 0 4px; border-radius: 3px; color: var(--ink); background: #d6d0bf; }
 
 .map-row .chart-block { padding-right: 20px; margin-bottom: 0; }
 .map-row { margin-bottom: 64px; }
@@ -256,8 +268,11 @@ figcaption span { display: block; }
   background: transparent;
   border: 0;
   border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
 }
 
+.war-buttons button:hover { background: rgba(255, 255, 255, 0.8); color: var(--ink); }
 .war-buttons button[aria-pressed="true"] { color: #fff; background: var(--poppy); box-shadow: 0 2px 8px rgba(184, 40, 28, 0.35); }
 
 .war-readout { display: flex; align-items: center; gap: 12px; margin: 0; font-size: var(--fs-small); line-height: 1.35; color: var(--ink-soft); }
