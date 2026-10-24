@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Venn diagram of the 1,399 Queensland war memorials: how many honour the First World War, the Second World War, both, or neither. The box holds every memorial. Circles are not drawn to scale.",
+  "description": "Venn diagram of the 1,399 Queensland war memorials: how many honour the First World War, the Second World War, both, or neither. The box holds every memorial. Circle areas are to scale: size = 60.957 x memorials (Vega size is the bounding-box area, so radius = sqrt(size) / 2, about 47.9 square pixels of circle per memorial). The centre distance (78.3 px, so x = 189.7 and 268.0) was solved so the overlap area matches the 429 memorials honouring both wars.",
   "width": 460,
   "height": 390,
   "padding": 4,
@@ -58,22 +58,42 @@
       ]
     },
     {
-      "data": {
-        "values": [
-          {"set": "First World War", "x": 170},
-          {
-            "set": "Second World War",
-            "x": 290
-          }
-        ]
-      },
-      "mark": {"type": "circle", "size": 34000, "opacity": 0.55, "stroke": "#fbf9f4", "strokeWidth": 2},
+      "data": {"url": "data/qld_memorials.csv"},
+      "transform": [
+        {
+          "calculate": "indexof(datum.conflicts || '', 'First World War') >= 0 ? 1 : 0",
+          "as": "First World War"
+        },
+        {
+          "calculate": "indexof(datum.conflicts || '', 'Second World War') >= 0 ? 1 : 0",
+          "as": "Second World War"
+        },
+        {
+          "aggregate": [
+            {"op": "sum", "field": "First World War", "as": "First World War"},
+            {
+              "op": "sum",
+              "field": "Second World War",
+              "as": "Second World War"
+            }
+          ]
+        },
+        {"fold": [ "First World War", "Second World War" ], "as": ["set", "total"]},
+        {"calculate": "datum.total * 60.957", "as": "area"},
+        {"calculate": "datum.set == 'First World War' ? 189.7 : 268.0", "as": "x"}
+      ],
+      "mark": {"type": "circle", "opacity": 0.55, "stroke": "#fbf9f4", "strokeWidth": 2},
       "encoding": {
         "x": {
           "field": "x",
           "type": "quantitative",
           "scale": null,
           "axis": null
+        },
+        "size": {
+          "field": "area",
+          "type": "quantitative",
+          "scale": null
         },
         "y": {"value": 200},
         "color": {

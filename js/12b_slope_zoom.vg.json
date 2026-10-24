@@ -1,0 +1,281 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Zoomed slope graph for the 12 smaller wars (all but the two world wars), on a 0-10% scale. Same data and columns as chart 12, so the fan of rising lines is readable.",
+  "width": "container",
+  "height": 300,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "padding": {"top": 8, "left": 8, "right": 8, "bottom": 8},
+  "title": {
+    "text": "Zoomed in: the 12 smaller wars, 0–10%",
+    "anchor": "start",
+    "font": "'Source Sans 3', sans-serif",
+    "fontSize": 14,
+    "fontWeight": 700,
+    "color": "#2b2a27",
+    "offset": 12
+  },
+  "data": {
+    "url": "data/memorials_vs_deaths.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "pct_deaths": "number",
+        "pct_memorials": "number",
+        "deaths": "number",
+        "memorial_mentions": "number"
+      }
+    }
+  },
+  "transform": [
+    {"filter": "datum.conflict != 'First World War' && datum.conflict != 'Second World War'"},
+    {"fold": ["pct_deaths", "pct_memorials"], "as": [ "measure", "percent" ]},
+    {
+      "calculate": "datum.measure == 'pct_deaths' ? 'Share of deaths' : 'Share of memorial mentions'",
+      "as": "measure_label"
+    },
+    {
+      "calculate": "indexof(['Vietnam War', 'Korean War', 'Malayan Emergency', 'Boer War', 'Indonesian Confrontation'], datum.conflict) >= 0",
+      "as": "highlight"
+    },
+    {
+      "calculate": "{'Vietnam War': '#3e1875', 'Korean War': '#2788b9', 'Malayan Emergency': '#dba156', 'Boer War': '#725e44', 'Indonesian Confrontation': '#7a56db'}[datum.conflict] || '#9b958a'",
+      "as": "line_color"
+    },
+    {
+      "calculate": "datum.percent + ({'Malayan Emergency': 0.2, 'Boer War': -0.2, 'Indonesian Confrontation': -0.1}[datum.conflict] || 0)",
+      "as": "label_y"
+    },
+    {
+      "calculate": "datum.conflict + '  ' + format(datum.percent, datum.percent < 1 ? '.2f' : '.1f') + '%'",
+      "as": "end_label"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "measure_label",
+      "type": "ordinal",
+      "sort": [
+        "Share of deaths",
+        "Share of memorial mentions"
+      ],
+      "title": null,
+      "scale": {
+        "padding": 0.0,
+        "paddingOuter": 0,
+        "range": [
+          {"expr": "0.3 * width"},
+          {"expr": "0.62 * width"}
+        ]
+      },
+      "axis": null
+    },
+    "y": {
+      "field": "percent",
+      "type": "quantitative",
+      "title": null,
+      "scale": {
+        "domain": [0, 10]
+      },
+      "axis": {
+        "values": [0, 5, 10],
+        "format": ".0f",
+        "labelExpr": "datum.label + '%'",
+        "grid": true,
+        "domain": false,
+        "ticks": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "transform": [
+        {"filter": "!datum.highlight"}
+      ],
+      "mark": {
+        "type": "line",
+        "strokeWidth": 1.2,
+        "opacity": 0.8
+      },
+      "encoding": {
+        "detail": {
+          "field": "conflict",
+          "type": "nominal"
+        },
+        "color": {
+          "condition": {"param": "hover", "empty": false, "value": "#2b2a27"},
+          "value": "#9b958a"
+        },
+        "strokeWidth": {
+          "condition": {"param": "hover", "empty": false, "value": 3},
+          "value": 1.2
+        }
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.highlight"}
+      ],
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "color": {
+          "field": "line_color",
+          "type": "nominal",
+          "scale": null
+        },
+        "detail": {
+          "field": "conflict",
+          "type": "nominal"
+        },
+        "strokeWidth": {
+          "condition": {"param": "hover", "empty": false, "value": 5},
+          "value": 3
+        }
+      }
+    },
+    {
+      "mark": {"type": "circle", "size": 55, "opacity": 1},
+      "encoding": {
+        "color": {
+          "field": "line_color",
+          "type": "nominal",
+          "scale": null
+        },
+        "tooltip": [
+          {
+            "field": "conflict",
+            "type": "nominal",
+            "title": "War"
+          },
+          {
+            "field": "measure_label",
+            "type": "nominal",
+            "title": "Measure"
+          },
+          {
+            "field": "percent",
+            "type": "quantitative",
+            "title": "Per cent",
+            "format": ".2f"
+          },
+          {
+            "field": "deaths",
+            "type": "quantitative",
+            "title": "Australian deaths",
+            "format": ","
+          },
+          {
+            "field": "memorial_mentions",
+            "type": "quantitative",
+            "title": "Memorial mentions",
+            "format": ","
+          }
+        ],
+        "size": {
+          "condition": {"param": "hover", "empty": false, "value": 150},
+          "value": 55
+        }
+      },
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "fields": [
+              "conflict"
+            ],
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
+        }
+      ]
+    },
+    {
+      "transform": [
+        {"filter": "datum.highlight && datum.measure == 'pct_memorials'"}
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 9,
+        "fontSize": 14,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "text": {
+          "field": "end_label",
+          "type": "nominal"
+        },
+        "y": {
+          "field": "label_y",
+          "type": "quantitative"
+        },
+        "color": {"value": "#2b2a27"}
+      }
+    },
+    {
+      "transform": [
+        {"filter": "!datum.highlight && datum.measure == 'pct_memorials'"},
+        {
+          "filter": {"param": "hover", "empty": false}
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 9,
+        "fontSize": 14,
+        "fontWeight": 600,
+        "color": "#2b2a27"
+      },
+      "encoding": {
+        "text": {
+          "field": "end_label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "measure_label": "Share of deaths",
+            "y": 0.6,
+            "note": "Each under 0.6% of deaths"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "bottom",
+        "dx": -9,
+        "fontSize": 14,
+        "fontStyle": "italic",
+        "color": "#4a473f"
+      },
+      "encoding": {
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "x": {
+          "field": "measure_label",
+          "type": "ordinal"
+        },
+        "text": {
+          "field": "note",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}

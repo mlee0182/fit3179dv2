@@ -10,7 +10,8 @@ var CHARTS = [
   ['chart-heatmap', 'js/09_heatmap.vg.json'],
   ['chart-venn', 'js/10_venn.vg.json', 'fixed'],
   ['chart-wordcloud', 'js/11_wordcloud.vg.json', 'fixed'],
-  ['chart-slope', 'js/12_slope.vg.json']
+  ['chart-slope', 'js/12_slope.vg.json'],
+  ['chart-slope-zoom', 'js/12b_slope_zoom.vg.json']
 ];
 
 var THEME = {

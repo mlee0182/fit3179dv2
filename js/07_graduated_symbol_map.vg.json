@@ -32,7 +32,7 @@
         "signal": "data('councils')"
       },
       "extent": {
-        "signal": "[[0, 10], [width - 50, height - 34]]"
+        "signal": "[[0, 10], [width - 160, height - 34]]"
       }
     }
   ],
@@ -135,12 +135,12 @@
             {
               "force": "x",
               "x": "x0",
-              "strength": 0.2
+              "strength": 0.35
             },
             {
               "force": "y",
               "y": "y0",
-              "strength": 0.2
+              "strength": 0.35
             }
           ],
           "restart": true
@@ -303,16 +303,16 @@
         },
         "update": {
           "x": {
-            "signal": "datum.lga_name == 'Toowoomba' ? datum.x - datum.r - 6 : datum.x"
+            "signal": "datum.lga_name == 'Toowoomba' ? datum.x - datum.r - 6 : datum.x + datum.r + 6"
           },
           "y": {
-            "signal": "datum.lga_name == 'Brisbane' ? datum.y + datum.r + 4 : datum.lga_name == 'Toowoomba' ? datum.y : datum.y - datum.r - 4"
+            "signal": "datum.lga_name == 'Bundaberg' ? datum.y - datum.r - 2 : datum.lga_name == 'Toowoomba' ? datum.y - 6 : datum.y"
           },
           "align": {
-            "signal": "datum.lga_name == 'Toowoomba' ? 'right' : 'center'"
+            "signal": "datum.lga_name == 'Toowoomba' ? 'right' : 'left'"
           },
           "baseline": {
-            "signal": "datum.lga_name == 'Brisbane' ? 'top' : datum.lga_name == 'Toowoomba' ? 'middle' : 'bottom'"
+            "value": "middle"
           }
         }
       }
@@ -339,16 +339,16 @@
         },
         "update": {
           "x": {
-            "signal": "datum.lga_name == 'Toowoomba' ? datum.x - datum.r - 6 : datum.x"
+            "signal": "datum.lga_name == 'Toowoomba' ? datum.x - datum.r - 6 : datum.x + datum.r + 6"
           },
           "y": {
-            "signal": "datum.lga_name == 'Brisbane' ? datum.y + datum.r + 4 : datum.lga_name == 'Toowoomba' ? datum.y : datum.y - datum.r - 4"
+            "signal": "datum.lga_name == 'Bundaberg' ? datum.y - datum.r - 2 : datum.lga_name == 'Toowoomba' ? datum.y - 6 : datum.y"
           },
           "align": {
-            "signal": "datum.lga_name == 'Toowoomba' ? 'right' : 'center'"
+            "signal": "datum.lga_name == 'Toowoomba' ? 'right' : 'left'"
           },
           "baseline": {
-            "signal": "datum.lga_name == 'Brisbane' ? 'top' : datum.lga_name == 'Toowoomba' ? 'middle' : 'bottom'"
+            "value": "middle"
           }
         }
       }

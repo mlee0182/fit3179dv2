@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Hexagon bin map. Memorials are grouped into equal-sized hexagons so crowded areas such as Brisbane can be compared fairly with the bush.",
+  "description": "Hexagon bin map. Memorials are grouped into hexagons 0.4 degrees across (about 70 km, a little narrower in the south) so crowded areas such as Brisbane can be compared fairly with the bush.",
   "width": "container",
   "height": 560,
   "autosize": {
@@ -113,7 +113,7 @@
           "transform": [
             {"filter": "datum.memorials >= 100"},
             {
-              "calculate": "['Brisbane:', datum.memorials]",
+              "calculate": "['Brisbane area:', datum.memorials]",
               "as": "note"
             }
           ],

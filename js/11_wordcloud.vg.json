@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "description": "Word cloud of the words engraved on Queensland war memorials, showing words used 36 times or more. Larger words are used more often. Red words are named in the headline; dark words come from three set phrases; editors' notes in square brackets and common little words are removed.",
+  "description": "Word cloud of the words engraved on Queensland war memorials, showing words used 36 times or more. Larger words are used more often. Red words are named in the headline (honour 407, memory 250, lest 261, forget 265 uses); dark words come from the other two set phrases; editors' notes in square brackets and common little words are removed.",
   "width": 1000,
   "height": 330,
   "padding": 12,
@@ -42,7 +42,7 @@
           },
           "baseline": {"value": "alphabetic"},
           "fill": {
-            "signal": "indexof(['honour', 'memory', 'sacrifice'], datum.text) >= 0 ? '#b8281c' : indexof(['lest', 'forget', 'supreme', 'liveth', 'evermore'], datum.text) >= 0 ? '#2b2a27' : '#9b958a'"
+            "signal": "indexof(['honour', 'memory', 'lest', 'forget'], datum.text) >= 0 ? '#b8281c' : indexof(['supreme', 'sacrifice', 'liveth', 'evermore'], datum.text) >= 0 ? '#2b2a27' : '#9b958a'"
           },
           "tooltip": {
             "signal": "{'Word': datum.text, 'Times used': datum.count}"

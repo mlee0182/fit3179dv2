@@ -166,10 +166,11 @@ p:last-child { margin-bottom: 0; }
 .scope-qld { color: var(--card); background: var(--ink); }
 .chart, .chart .vega-embed { width: 100%; }
 .chart-venn { max-width: 480px; }
+#chart-slope-zoom { margin-top: 28px; }
 #chart-waffle { aspect-ratio: 24 / 17; }
 
-figcaption { max-width: 32em; margin-top: 14px; font-size: var(--fs-small); line-height: 1.55; color: var(--ink-faint); }
-figcaption span { display: block; }
+figcaption, .caption { max-width: 32em; margin-top: 14px; font-size: var(--fs-small); line-height: 1.55; color: var(--ink-faint); }
+figcaption span, .caption span { display: block; }
 
 /* Colour words in the text use the chart's own colour */
 .key-red { color: var(--poppy); }
