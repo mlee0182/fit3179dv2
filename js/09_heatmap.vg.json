@@ -7,7 +7,7 @@
     "type": "fit",
     "contains": "padding"
   },
-  "padding": {"top": 118, "left": 60, "right": 52, "bottom": 4},
+  "padding": {"top": 2, "left": 0, "right": 16, "bottom": 4},
   "data": {"url": "data/qld_memorials.csv"},
   "transform": [
     {
