@@ -353,6 +353,7 @@ button:focus-visible, input[type="range"]:focus-visible { outline: 3px solid var
 .source:first-child { margin-top: 6px; }
 .source strong { display: block; margin-bottom: 2px; color: var(--ink); }
 .source a { color: var(--ink); overflow-wrap: anywhere; }
+.source span { display: block; }
 
 .credit { margin: 20px 0 0; padding-top: 16px; font-size: var(--fs-small); color: var(--ink-faint); border-top: 1px solid var(--rule); }
 .credit span { display: block; }
