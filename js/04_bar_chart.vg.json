@@ -7,7 +7,7 @@
     "type": "fit",
     "contains": "padding"
   },
-  "padding": {"top": 6, "left": 36, "right": 12, "bottom": 6},
+  "padding": {"top": 0, "left": 0, "right": 12, "bottom": 6},
   "data": {
     "url": "data/pop_memorials_by_conflict.csv"
   },

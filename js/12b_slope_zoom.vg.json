@@ -7,7 +7,7 @@
     "type": "fit",
     "contains": "padding"
   },
-  "padding": {"top": 8, "left": 8, "right": 8, "bottom": 8},
+  "padding": {"top": 3, "left": 0, "right": 8, "bottom": 6},
   "title": {
     "text": "Zoomed in: the 12 smaller wars, 0–10%",
     "anchor": "start",

@@ -3,7 +3,7 @@
   "description": "Venn diagram of the 1,399 Queensland war memorials: how many honour the First World War, the Second World War, both, or neither. The box holds every memorial. Circle areas are to scale: size = 60.957 x memorials (Vega size is the bounding-box area, so radius = sqrt(size) / 2, about 47.9 square pixels of circle per memorial). The centre distance (78.3 px, so x = 189.7 and 268.0) was solved so the overlap area matches the 429 memorials honouring both wars.",
   "width": 460,
   "height": 390,
-  "padding": 4,
+  "padding": 1,
   "view": {"stroke": null},
   "layer": [
     {

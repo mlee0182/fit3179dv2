@@ -3,6 +3,7 @@
   "description": "Waffle chart. Each full square is 500 Australian deaths, coloured by conflict; a war's last square is filled only by its leftover share of 500, inside an outline of a full square. Source: Australian War Memorial.",
   "width": "container",
   "height": "container",
+  "padding": {"top": 0, "left": 0, "right": 0, "bottom": 5},
   "config": {
     "view": {
       "stroke": null
