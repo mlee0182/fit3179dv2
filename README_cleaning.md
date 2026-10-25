@@ -15,7 +15,7 @@ The page itself loads only the files in `data/`, never `data/raw/`.
 | `qld_memorials.csv` | Queensland Government | Cleaned from `raw/war-memorials.csv` (§1) |
 | `awm_deaths_by_conflict.csv` | Australian War Memorial | Cleaned from `raw/casualties.csv` (§2) |
 | `memorials_vs_deaths.csv` | AWM + Places of Pride | Calculated from two other files (§3) |
-| `pop_memorials_by_conflict.csv`, `pop_memorials_by_type.csv`, `pop_memorials_by_type_and_conflict.csv` | Places of Pride (AWM) | Result counts read from the register's filters (§4) |
+| `pop_memorials_by_conflict.csv`, `pop_memorials_by_type.csv` | Places of Pride (AWM) | Result counts read from the register's filters (§4) |
 | `qld_councils.json` | Australian Bureau of Statistics | Boundaries simplified and converted to TopoJSON (§5) |
 
 ---
@@ -83,19 +83,17 @@ memorials ("Displaying 1 – 24 of **N**").
 |---|---|---|
 | `pop_memorials_by_conflict.csv` | each conflict on its own | 18 |
 | `pop_memorials_by_type.csv` | each memorial type on its own | 41 |
-| `pop_memorials_by_type_and_conflict.csv` | every type + conflict pair together | 41 × 18 = 738 |
 
 The counts were read automatically, by loading each filtered results page in a browser and reading its "of N" figure,
-then checked by hand: e.g. *Cenotaph* + *First World War* shows 148 on the live site, the same as the file.
+then spot-checked by hand against the live site.
 
 **Columns added (not from the site):**
 - `retrieved`: the collection date, because the register is crowd-sourced and keeps growing.
 - `conflict` (short name), `start_year`, `end_year`, `is_specific_war` in the conflict file: taken from the filter labels
   (e.g. "First World War, 1914–18" → First World War, 1914, 1918). `is_specific_war` is `False` for "All", "Other",
   "National Service" and "Peacekeeping", which aren't single wars.
-- `family` in the type files: **the author's own grouping** of the 41 types into five groups for the treemap
+- `family` in the type file: **the author's own grouping** of the 41 types into five groups for the treemap
   (Rolls and boards, Monuments, Buildings, Trees/parks/gardens, Other). It is not an AWM category.
-- `share_of_type_pct` in the type-and-conflict file = count ÷ that type's total × 100.
 
 **Limits:**
 - One memorial can be tagged with several conflicts, so the conflict counts add up to 14,821, more than the 12,935 memorials.
