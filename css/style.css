@@ -362,6 +362,7 @@ button:focus-visible, input[type="range"]:focus-visible { outline: 3px solid var
   h2 { font-size: 36px; }
   .insight { font-size: 26px; }
   .side { padding-right: 0; margin-bottom: 20px; }
+  .text { max-width: 23em; }
   .chapter-head h2 { margin-bottom: 12px; padding-right: 0; }
   .stats { margin-top: 28px; }
 }
